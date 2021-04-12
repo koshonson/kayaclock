@@ -4,7 +4,7 @@
 	"description": "basic React project template /w webpack and babel",
 	"main": "index.js",
 	"scripts": {
-		"start": "webpack serve",
+		"dev": "webpack serve",
 		"build": "webpack --mode production"
 	},
 	"keywords": [
