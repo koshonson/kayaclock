@@ -56,7 +56,6 @@ export const getClockCellStyle = ({ style, type }) => {
 		offset: 0,
 		inset: false
 	});
-	console.log(boxShadow2);
 
 	return {
 		position: 'relative',
