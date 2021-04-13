@@ -1,4 +1,6 @@
-export const clockHand = ({ style, type, rotation }) => {
+import { defaultStyles } from './defaultStyles';
+
+export const getClockHandStyle = ({ style, type, rotation }) => {
 	const options = style[type];
 	const { leaf, tail } = options;
 	const { color: L_color, width: L_w, height: L_h, zIndex: L_zIndex } = leaf;
@@ -29,4 +31,29 @@ export const clockHand = ({ style, type, rotation }) => {
 			transform: `rotate(${rotation}deg)`
 		}
 	};
+};
+
+export const setClockHandStyle = (
+	{ type, scope, styles },
+	currentStyles = defaultStyles
+) => {
+	const newStyles = {};
+	newStyles[type] = {};
+	switch (scope) {
+		case 'leaf':
+			newStyles[type].leaf = { ...currentStyles[type].leaf, ...styles };
+			newStyles[type].tail = currentStyles[type].tail;
+			break;
+		case 'tail':
+			newStyles[type].leaf = currentStyles[type].leaf;
+			newStyles[type].tail = { ...currentStyles[type].tail, ...styles };
+			break;
+		case 'full':
+			newStyles[type].leaf = { ...currentStyles[type].leaf, ...styles };
+			newStyles[type].tail = { ...currentStyles[type].tail, ...styles };
+			break;
+		default:
+			break;
+	}
+	return newStyles;
 };

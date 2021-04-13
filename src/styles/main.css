@@ -16,9 +16,6 @@
 	--cellShadowThicknessNegative: calc(var(--cellShadowThickness) * -1);
 	--cellShadowColor: rgba(0, 0, 0, 0.7);
 	--centerCellColor: rgba(0, 0, 0, 0.9);
-	--hrHandColor: rgb(200, 10, 75);
-	--mnHandColor: rgb(180, 10, 75);
-	--scHandColor: rgb(200, 150, 75);
 }
 
 .container {

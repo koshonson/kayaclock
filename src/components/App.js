@@ -1,7 +1,9 @@
 import '../styles/main.css';
 import React, { useState } from 'react';
-import { defaultStyles, canvasBg } from '../styles/clockStyleFunctions';
+import { defaultStyles, getCanvasBg } from '../styles/clockStyleFunctions';
 import { styleContext } from '../context/styleContext';
+
+import MenuIcon from '../styles/icons/menu';
 
 import Menu from './Menu';
 import ClockBoard from './ClockBoard';
@@ -21,8 +23,12 @@ const App = () => {
 
 	return (
 		<styleContext.Provider value={{ style: clockStyle, setStyle: updateStyle }}>
-			<div className="container centered" style={canvasBg(clockStyle)}>
-				<Button content="📃" onClick={openMenu} className="menu-btn" />
+			<div className="container centered" style={getCanvasBg(clockStyle)}>
+				<Button
+					content={<MenuIcon />}
+					onClick={openMenu}
+					className="menu-btn"
+				/>
 				<Menu menuVisible={menuVisible} />
 				<ClockBoard menuVisible={menuVisible} />
 			</div>

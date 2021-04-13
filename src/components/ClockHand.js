@@ -1,10 +1,10 @@
 import React, { useContext, Fragment } from 'react';
 import { styleContext } from '../context/styleContext';
-import { clockHand } from '../styles/clockStyleFunctions';
+import { getClockHandStyle } from '../styles/clockStyleFunctions';
 
 const ClockHand = ({ rotation, type }) => {
 	const { style } = useContext(styleContext);
-	const { leaf, tail } = clockHand({ style, type, rotation });
+	const { leaf, tail } = getClockHandStyle({ style, type, rotation });
 
 	return (
 		<Fragment>
