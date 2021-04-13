@@ -1,5 +1,6 @@
 export const defaultStyles = {
 	bgColor: '#f9f9f9',
+	clockBoardSize: 80,
 	hrHand: {
 		leaf: {
 			color: '#ff0000',

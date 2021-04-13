@@ -1,8 +1,8 @@
 import '../styles/clock.css';
 import React from 'react';
 
-import ClockCell from './ClockCell';
-import Clock from './Clock';
+import ClockCell from './clock/ClockCell';
+import Clock from './clock/Clock';
 
 const ClockBoard = ({ menuVisible, clockStyle }) => {
 	return (
@@ -15,9 +15,9 @@ const ClockBoard = ({ menuVisible, clockStyle }) => {
 				</ClockCell>
 				<ClockCell />
 				<ClockCell />
-				<div className="clock-cell clock-center">
+				<ClockCell type="center">
 					<Clock />
-				</div>
+				</ClockCell>
 				<ClockCell />
 				<ClockCell />
 				<ClockCell>
