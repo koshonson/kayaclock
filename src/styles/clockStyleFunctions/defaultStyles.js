@@ -2,13 +2,13 @@ export const defaultStyles = {
 	bgColor: '#f9f9f9',
 	hrHand: {
 		leaf: {
-			color: 'red',
+			color: '#ff0000',
 			width: 1.8,
 			height: 23,
 			zIndex: 15
 		},
 		tail: {
-			color: 'red',
+			color: '#ff0000',
 			width: 1.8,
 			height: 5,
 			zIndex: 15
@@ -16,13 +16,13 @@ export const defaultStyles = {
 	},
 	mnHand: {
 		leaf: {
-			color: 'blue',
+			color: '#0000ff',
 			width: 2,
 			height: 35,
 			zIndex: 10
 		},
 		tail: {
-			color: 'blue',
+			color: '#0000ff',
 			width: 2,
 			height: 4,
 			zIndex: 10
@@ -30,13 +30,13 @@ export const defaultStyles = {
 	},
 	scHand: {
 		leaf: {
-			color: 'green',
+			color: '#00ff00',
 			width: 0.2,
 			height: 10,
 			zIndex: 20
 		},
 		tail: {
-			color: 'green',
+			color: '#00ff00',
 			width: 0.2,
 			height: 2.5,
 			zIndex: 20

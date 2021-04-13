@@ -1,34 +1,22 @@
 import '../styles/menu.css';
-import React, { useContext } from 'react';
-import { styleContext } from '../context/styleContext';
-import { clockHandStyler } from '../styles/clockStyleFunctions';
+import React, { useState } from 'react';
+import { menuContext } from '../context/menuContext';
+
+import MenuSectionGeneral from './menu/MenuSectionGeneral';
+import MenuSectionHand from './menu/MenuSectionHand';
 
 const Menu = ({ menuVisible }) => {
-	const { style: currentStyles, setStyle } = useContext(styleContext);
-	const handStyles = clockHandStyler(currentStyles);
+	const [expanded, setExpanded] = useState('general');
 
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
-			<h3>Kaya Clock</h3>
-			<input
-				type="color"
-				onChange={e => setStyle({ bgColor: e.target.value })}
-			></input>
-			<input
-				type="color"
-				onChange={({ target: { value } }) =>
-					setStyle(handStyles.hrHand.leaf.color(value))
-				}
-			/>
-			<input
-				type="range"
-				min="5"
-				max="45"
-				step="1"
-				onChange={({ target: { value } }) =>
-					setStyle(handStyles.hrHand.full.width(value))
-				}
-			/>
+			<div className="menu-heading">Customize Clock</div>
+			<menuContext.Provider value={{ expanded, setExpanded }}>
+				<MenuSectionGeneral title="General" type="general" />
+				<MenuSectionHand title="Hour Hand" type="hrHand" />
+				<MenuSectionHand title="Minute Hand" type="mnHand" />
+				<MenuSectionHand title="Second Hand" type="scHand" />
+			</menuContext.Provider>
 		</div>
 	);
 };

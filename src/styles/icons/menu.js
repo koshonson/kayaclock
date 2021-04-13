@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MenuIcon = ({ className }) => {
+export const MenuIcon = ({ className }) => {
 	return (
 		<svg
 			style={{ width: '3vmin', fill: 'grey' }}
@@ -15,5 +15,3 @@ const MenuIcon = ({ className }) => {
 		</svg>
 	);
 };
-
-export default MenuIcon;

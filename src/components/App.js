@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { defaultStyles, getCanvasBg } from '../styles/clockStyleFunctions';
 import { styleContext } from '../context/styleContext';
 
-import MenuIcon from '../styles/icons/menu';
+import { MenuIcon } from '../styles/icons';
 
 import Menu from './Menu';
 import ClockBoard from './ClockBoard';
@@ -17,7 +17,7 @@ const App = () => {
 		setClockStyle(current => ({ ...current, ...newStyles }));
 	};
 
-	const openMenu = () => {
+	const toggleMenu = () => {
 		setMenuVisible(!menuVisible);
 	};
 
@@ -26,7 +26,7 @@ const App = () => {
 			<div className="container centered" style={getCanvasBg(clockStyle)}>
 				<Button
 					content={<MenuIcon />}
-					onClick={openMenu}
+					onClick={toggleMenu}
 					className="menu-btn"
 				/>
 				<Menu menuVisible={menuVisible} />
