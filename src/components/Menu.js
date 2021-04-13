@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { styleContext } from '../context/styleContext';
 
 const Menu = ({ menuVisible }) => {
-	const { set } = useContext(styleContext);
+	const { setStyle } = useContext(styleContext);
 
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
@@ -17,7 +17,7 @@ const Menu = ({ menuVisible }) => {
 			</ul>
 			<input
 				type="color"
-				onChange={e => set({ bgColor: e.target.value })}
+				onChange={e => setStyle({ bgColor: e.target.value })}
 			></input>
 		</div>
 	);

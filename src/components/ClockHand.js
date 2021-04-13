@@ -1,16 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
+import { styleContext } from '../context/styleContext';
+import { clockHand } from '../styles/clockStyleFunctions';
 
-const ClockHand = ({ style, rotation }) => {
+const ClockHand = ({ rotation, type }) => {
+	const { style } = useContext(styleContext);
+	const { leaf, tail } = clockHand({ style, type, rotation });
+
 	return (
 		<Fragment>
-			<div
-				className="hand-leaf mn-hand-leaf"
-				style={{ transform: `rotate(${rotation}deg)` }}
-			></div>
-			<div
-				className="hand-tail mn-hand-tail"
-				style={{ transform: `rotate(${rotation}deg)` }}
-			></div>
+			<div style={leaf}></div>
+			<div style={tail}></div>
 		</Fragment>
 	);
 };
