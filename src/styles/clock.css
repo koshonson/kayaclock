@@ -15,28 +15,6 @@
 	background-color: var(--centerCellColor);
 }
 
-.clock-center-cap-outer {
-	position: absolute;
-	top: calc(50% - 2vmin);
-	left: calc(50% - 2vmin);
-	width: 4vmin;
-	height: 4vmin;
-	background-color: var(--hrHandColor);
-	border-radius: 50%;
-	z-index: 20;
-}
-
-.clock-center-cap-inner {
-	position: absolute;
-	top: calc(50% - 1vmin);
-	left: calc(50% - 1vmin);
-	width: 2vmin;
-	height: 2vmin;
-	background-color: #eee;
-	border-radius: 50%;
-	z-index: 30;
-}
-
 .pin {
 	position: absolute;
 }

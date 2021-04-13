@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { styleContext } from '../../context/styleContext';
+import { getClockCellStyle } from '../../styles/clockStyleFunctions';
 
 const ClockCell = ({ type, children }) => {
-	return (
-		<div
-			className={`clock-cell ${
-				type === 'center' ? 'clock-center' : ''
-			}`.trim()}
-		>
-			{children}
-		</div>
-	);
+	const { style } = useContext(styleContext);
+
+	return <div style={getClockCellStyle({ style, type })}>{children}</div>;
 };
 
 export default ClockCell;

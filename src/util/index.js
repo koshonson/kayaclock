@@ -1,0 +1,1 @@
+export { combineColorTransparency } from './color';
