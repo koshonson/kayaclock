@@ -1,3 +1,3 @@
 export { defaultStyles } from './defaultStyles';
 export { getCanvasBg } from './canvas';
-export { getClockHandStyle, setClockHandStyle } from './clockHand';
+export { getClockHandStyle, clockHandStyler } from './clockHand';

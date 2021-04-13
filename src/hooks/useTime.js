@@ -12,7 +12,7 @@ export const useTime = () => {
 		setMnRotation(mn * 6);
 		setScRotation(sc * 6);
 		const timeout = setTimeout(() => {
-			setTime(new Date());
+			setTime(new Date(time.setSeconds(time.getSeconds() + 1)));
 		}, 1000);
 
 		return () => {

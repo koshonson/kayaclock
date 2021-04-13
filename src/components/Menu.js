@@ -1,40 +1,23 @@
 import '../styles/menu.css';
 import React, { useContext } from 'react';
 import { styleContext } from '../context/styleContext';
-import { setClockHandStyle } from '../styles/clockStyleFunctions';
+import { clockHandStyler } from '../styles/clockStyleFunctions';
 
 const Menu = ({ menuVisible }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
+	const handStyles = clockHandStyler(currentStyles);
 
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
-			<h3>Menu</h3>
-			<ul>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
+			<h3>Kaya Clock</h3>
 			<input
 				type="color"
 				onChange={e => setStyle({ bgColor: e.target.value })}
 			></input>
 			<input
 				type="color"
-				onChange={e =>
-					setStyle(
-						setClockHandStyle(
-							{
-								type: 'hrHand',
-								scope: 'full',
-								styles: {
-									color: e.target.value
-								}
-							},
-							currentStyles
-						)
-					)
+				onChange={({ target: { value } }) =>
+					setStyle(handStyles.hrHand.leaf.color(value))
 				}
 			/>
 			<input
@@ -42,19 +25,8 @@ const Menu = ({ menuVisible }) => {
 				min="5"
 				max="45"
 				step="1"
-				onChange={e =>
-					setStyle(
-						setClockHandStyle(
-							{
-								type: 'mnHand',
-								scope: 'leaf',
-								styles: {
-									height: e.target.value
-								}
-							},
-							currentStyles
-						)
-					)
+				onChange={({ target: { value } }) =>
+					setStyle(handStyles.hrHand.full.width(value))
 				}
 			/>
 		</div>

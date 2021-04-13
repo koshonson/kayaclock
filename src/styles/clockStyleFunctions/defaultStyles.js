@@ -41,5 +41,11 @@ export const defaultStyles = {
 			height: 2.5,
 			zIndex: 20
 		}
+	},
+	clockCells: {
+		tl: {
+			borderWidth: 7,
+			borderColor: 'rgba(0,0,0,0.8)'
+		}
 	}
 };
