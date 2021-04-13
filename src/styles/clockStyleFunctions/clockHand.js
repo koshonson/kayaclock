@@ -3,8 +3,20 @@ import { defaultStyles } from './defaultStyles';
 export const getClockHandStyle = ({ style, type, rotation }) => {
 	const options = style[type];
 	const { leaf, tail } = options;
-	const { color: L_color, width: L_w, height: L_h, zIndex: L_zIndex } = leaf;
-	const { color: T_color, width: T_w, height: T_h, zIndex: T_zIndex } = tail;
+	const {
+		color: L_color,
+		width: L_w,
+		height: L_h,
+		zIndex: L_zIndex,
+		radius: L_radius
+	} = leaf;
+	const {
+		color: T_color,
+		width: T_w,
+		height: T_h,
+		zIndex: T_zIndex,
+		radius: T_radius
+	} = tail;
 	return {
 		leaf: {
 			position: 'absolute',
@@ -16,6 +28,8 @@ export const getClockHandStyle = ({ style, type, rotation }) => {
 			zIndex: L_zIndex,
 			width: `${L_w}vmin`,
 			height: `${L_h}vmin`,
+			borderTopLeftRadius: `${L_radius}%`,
+			borderTopRightRadius: `${L_radius}%`,
 			transform: `rotate(${rotation}deg)`
 		},
 		tail: {
@@ -28,6 +42,8 @@ export const getClockHandStyle = ({ style, type, rotation }) => {
 			zIndex: T_zIndex,
 			width: `${T_w}vmin`,
 			height: `${T_h}vmin`,
+			borderBottomLeftRadius: `${T_radius}%`,
+			borderBottomRightRadius: `${T_radius}%`,
 			transform: `rotate(${rotation}deg)`
 		}
 	};
