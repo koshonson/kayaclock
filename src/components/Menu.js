@@ -1,7 +1,10 @@
 import '../styles/menu.css';
-import React from 'react';
+import React, { useContext } from 'react';
+import { styleContext } from '../context/styleContext';
 
-const Menu = ({ menuVisible, updateStyle }) => {
+const Menu = ({ menuVisible }) => {
+	const { set } = useContext(styleContext);
+
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
 			<h3>Menu</h3>
@@ -14,7 +17,7 @@ const Menu = ({ menuVisible, updateStyle }) => {
 			</ul>
 			<input
 				type="color"
-				onChange={e => updateStyle({ bgColor: e.target.value })}
+				onChange={e => set({ bgColor: e.target.value })}
 			></input>
 		</div>
 	);

@@ -20,9 +20,13 @@ export const useTime = () => {
 		setMnRotation(mn * 6);
 		scHandLeaf.current.style.transform = `rotate(${sc * 6}deg)`;
 		scHandTail.current.style.transform = `rotate(${sc * 6}deg)`;
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
 			setTime(new Date());
 		}, 1000);
+
+		return () => {
+			clearTimeout(timeout);
+		};
 	}, [time]);
 
 	return {
