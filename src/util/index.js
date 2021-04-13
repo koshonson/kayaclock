@@ -1,1 +1,1 @@
-export { combineColorTransparency } from './color';
+export { combineColorTransparency, rgbToHex, hexToRgb } from './color';

@@ -1,18 +1,20 @@
 export const defaultStyles = {
-	bgColor: '#f9f9f9',
+	bgColor: 'rgb(249, 249, 249)',
 	clockBoardSize: 80,
 	hrHand: {
 		leaf: {
 			color: 'rgb(255, 0, 0)',
 			width: 1.8,
 			height: 23,
-			zIndex: 15
+			zIndex: 15,
+			radius: 0
 		},
 		tail: {
 			color: 'rgb(255, 0, 0)',
 			width: 1.8,
 			height: 5,
-			zIndex: 15
+			zIndex: 15,
+			radius: 0
 		}
 	},
 	mnHand: {
@@ -20,13 +22,15 @@ export const defaultStyles = {
 			color: 'rgb(0,0,255)',
 			width: 2,
 			height: 35,
-			zIndex: 10
+			zIndex: 10,
+			radius: 0
 		},
 		tail: {
 			color: 'rgb(0,0,255)',
 			width: 2,
 			height: 4,
-			zIndex: 10
+			zIndex: 10,
+			radius: 0
 		}
 	},
 	scHand: {
@@ -34,13 +38,15 @@ export const defaultStyles = {
 			color: 'rgb(0,255,0)',
 			width: 0.2,
 			height: 10,
-			zIndex: 20
+			zIndex: 20,
+			radius: 0
 		},
 		tail: {
 			color: 'rgb(0,255,0)',
 			width: 0.2,
 			height: 2.5,
-			zIndex: 20
+			zIndex: 20,
+			radius: 0
 		}
 	},
 	clockCap: {
@@ -115,7 +121,7 @@ export const defaultStyles = {
 			borderColor: 'rgb(0,0,0)',
 			borderOpacity: 0.8,
 			borderRadius: 50,
-			bgColor: 'rgb(255,255,255)',
+			bgColor: 'rgb(0,0,0)',
 			bgOpacity: 0.9,
 			shadowThickness: 0,
 			shadowBlur: 0,

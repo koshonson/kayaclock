@@ -7,7 +7,7 @@ import { MenuIcon } from '../styles/icons';
 
 import Menu from './Menu';
 import ClockBoard from './ClockBoard';
-import Button from './Button';
+import Button from './generic/Button';
 
 const App = () => {
 	const [menuVisible, setMenuVisible] = useState(false);

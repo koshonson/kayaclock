@@ -1,3 +1,30 @@
+input[type='color'] {
+	width: 3.5vmin;
+	height: 3.5vmin;
+	background-color: transparent;
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+input[type='color']:active {
+	border: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 50%;
+}
+
+input[type='color']::-moz-color-swatch {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 50%;
+}
+
+input[type='range'] {
+	width: 5vw;
+}
+
 .menu {
 	position: absolute;
 	display: flex;
@@ -95,4 +122,23 @@
 .menu-section-content.closed {
 	height: 0;
 	visibility: collapse;
+}
+
+.menu-section-content-block {
+	display: flex;
+	justify-content: space-between;
+}
+
+.menu-section-content-block-label {
+	margin: 0.25vmin 1vmin 0 1vmin;
+	padding-left: 2vmin;
+	padding-top: 0.15vmin;
+	font-size: 75%;
+	color: rgba(0, 0, 0, 0.75);
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.input-block {
+	display: flex;
+	flex-direction: column;
 }

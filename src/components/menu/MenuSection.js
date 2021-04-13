@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { menuContext } from '../../context/menuContext';
 
-import Button from '../Button';
+import Button from '../generic/Button';
 import { ArrowIcon } from '../../styles/icons';
 
 const MenuSection = ({ children, title, type }) => {

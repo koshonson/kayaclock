@@ -1,17 +1,26 @@
 import React, { useContext } from 'react';
 import MenuSection from './MenuSection';
 import { styleContext } from '../../context/styleContext';
+import { rgbToHex, hexToRgb } from '../../util';
+
+import Input from '../generic/Input';
 
 const MenuSectionGeneral = ({ title, type }) => {
-	const { setStyle } = useContext(styleContext);
+	const {
+		style: { bgColor },
+		setStyle
+	} = useContext(styleContext);
 
 	return (
 		<MenuSection title={title} type={type}>
-			<label>Background</label>
-			<input
+			<Input
+				label="Background"
 				type="color"
-				onChange={e => setStyle({ bgColor: e.target.value })}
-			></input>
+				value={rgbToHex(bgColor)}
+				onChange={({ target: { value } }) => {
+					setStyle({ bgColor: hexToRgb(value) });
+				}}
+			/>
 		</MenuSection>
 	);
 };
