@@ -67,7 +67,7 @@ export const defaultStyles = {
 		topLeft: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -75,12 +75,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 0
+			shadowOffset: 0,
+			zIndex: 1
 		},
 		top: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -88,12 +89,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 2
+			shadowOffset: 2,
+			zIndex: 2
 		},
 		topRight: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -101,12 +103,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 0
+			shadowOffset: 0,
+			zIndex: 1
 		},
 		left: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -114,12 +117,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 2
+			shadowOffset: 2,
+			zIndex: 2
 		},
 		center: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(0,0,0)',
 			bgOpacity: 0.9,
@@ -127,12 +131,13 @@ export const defaultStyles = {
 			shadowBlur: 0,
 			shadowOpacity: 0,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 0
+			shadowOffset: 0,
+			zIndex: 3
 		},
 		right: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -140,12 +145,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 2
+			shadowOffset: 2,
+			zIndex: 2
 		},
 		bottomLeft: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -153,12 +159,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 0
+			shadowOffset: 0,
+			zIndex: 1
 		},
 		bottom: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -166,12 +173,13 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 2
+			shadowOffset: 2,
+			zIndex: 2
 		},
 		bottomRight: {
 			borderWidth: 7,
 			borderColor: 'rgb(0,0,0)',
-			borderOpacity: 0.8,
+			borderOpacity: 1,
 			borderRadius: 50,
 			bgColor: 'rgb(255,255,255)',
 			bgOpacity: 0,
@@ -179,7 +187,8 @@ export const defaultStyles = {
 			shadowBlur: 1,
 			shadowOpacity: 0.5,
 			shadowColor: 'rgb(0,0,0)',
-			shadowOffset: 0
+			shadowOffset: 0,
+			zIndex: 1
 		}
 	}
 };

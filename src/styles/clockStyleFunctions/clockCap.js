@@ -18,16 +18,7 @@ export const getClockCapStyle = ({ style, type }) => {
 
 const setClockCapStyle = ({ type, styles }, currentStyles) => {
 	const newStyles = currentStyles.clockCap;
-	switch (type) {
-		case 'inner':
-			newStyles.inner = { ...newStyles.inner, ...styles };
-			break;
-		case 'outer':
-			newStyles.outer = { ...newStyles.outer, ...styles };
-			break;
-		default:
-			break;
-	}
+	newStyles[type] = { ...newStyles[type], ...styles };
 	return newStyles;
 };
 

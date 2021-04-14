@@ -1,5 +1,19 @@
 import { combineColorTransparency as colComb } from '../../util';
 
+const OPTIONS = [
+	'borderWidth',
+	'borderColor',
+	'borderOpacity',
+	'borderRadius',
+	'bgColor',
+	'bgOpacity',
+	'shadowThickness',
+	'shadowColor',
+	'shadowOpacity',
+	'shadowBlur',
+	'shadowOffset'
+];
+
 const placeShadowsByType = ({ type, thickness, blur, color, offset, inset }) => {
 	const COEFFS = {
 		topLeft: [1, 1],
@@ -31,7 +45,8 @@ export const getClockCellStyle = ({ style, type }) => {
 		shadowColor,
 		shadowOpacity,
 		shadowBlur: blur,
-		shadowOffset: offset
+		shadowOffset: offset,
+		zIndex
 	} = options;
 
 	const brdCol = colComb(borderColor, borderOpacity);
@@ -62,6 +77,48 @@ export const getClockCellStyle = ({ style, type }) => {
 		border: `${borderWidth}px solid ${brdCol}`,
 		borderRadius: `${borderRadius}%`,
 		backgroundColor: bgCol,
-		boxShadow: [boxShadow1, boxShadow2]
+		boxShadow: [boxShadow1, boxShadow2],
+		zIndex
 	};
+};
+
+const setClockCellStyle = ({ type, styles }, currentStyles) => {
+	const newStyles = currentStyles.clockCells;
+	newStyles[type] = { ...newStyles[type], ...styles };
+	return newStyles;
+};
+
+const singleCellStyler = (type, currentStyles) => {
+	const changeStyle = styles => setClockCellStyle({ type, styles }, currentStyles);
+	return OPTIONS.reduce((a, v) => {
+		a[v] = value => changeStyle({ [v]: value });
+		return a;
+	}, {});
+};
+
+const multiCellStyler = (types, currentStyles) => {
+	return OPTIONS.reduce((a, v) => {
+		a[v] = value => {
+			for (let type of types) {
+				setClockCellStyle({ type, styles: { [v]: value } }, currentStyles);
+			}
+		};
+		return a;
+	}, {});
+};
+
+export const clockCellStyler = (type, currentStyles) => {
+	const CORNERS = ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
+	const EDGES = ['top', 'left', 'right', 'bottom'];
+
+	switch (type) {
+		case 'corners':
+			return multiCellStyler(CORNERS, currentStyles);
+		case 'edges':
+			return multiCellStyler(EDGES, currentStyles);
+		case 'outer':
+			return multiCellStyler([...EDGES, ...CORNERS], currentStyles);
+		default:
+			return singleCellStyler(type, currentStyles);
+	}
 };
