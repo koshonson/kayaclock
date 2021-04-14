@@ -113,51 +113,60 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 			leaf: {
 				color: value => hrHandLeaf({ color: value }, currentStyles),
 				width: value => hrHandLeaf({ width: value }, currentStyles),
-				length: value => hrHandLeaf({ height: value }, currentStyles)
+				length: value => hrHandLeaf({ height: value }, currentStyles),
+				radius: value => hrHandLeaf({ radius: value }, currentStyles)
 			},
 			tail: {
 				color: value => hrHandTail({ color: value }, currentStyles),
 				width: value => hrHandTail({ width: value }, currentStyles),
-				length: value => hrHandTail({ height: value }, currentStyles)
+				length: value => hrHandTail({ height: value }, currentStyles),
+				radius: value => hrHandTail({ radius: value }, currentStyles)
 			},
 			full: {
 				color: value => hrHandFull({ color: value }, currentStyles),
 				width: value => hrHandFull({ width: value }, currentStyles),
-				length: value => hrHandFull({ height: value }, currentStyles)
+				length: value => hrHandFull({ height: value }, currentStyles),
+				radius: value => hrHandFull({ radius: value }, currentStyles)
 			}
 		},
 		mnHand: {
 			leaf: {
 				color: value => mnHandLeaf({ color: value }, currentStyles),
 				width: value => mnHandLeaf({ width: value }, currentStyles),
-				length: value => mnHandLeaf({ height: value }, currentStyles)
+				length: value => mnHandLeaf({ height: value }, currentStyles),
+				radius: value => mnHandLeaf({ radius: value }, currentStyles)
 			},
 			tail: {
 				color: value => mnHandTail({ color: value }, currentStyles),
 				width: value => mnHandTail({ width: value }, currentStyles),
-				length: value => mnHandTail({ height: value }, currentStyles)
+				length: value => mnHandTail({ height: value }, currentStyles),
+				radius: value => mnHandTail({ radius: value }, currentStyles)
 			},
 			full: {
 				color: value => mnHandFull({ color: value }, currentStyles),
 				width: value => mnHandFull({ width: value }, currentStyles),
-				length: value => mnHandFull({ height: value }, currentStyles)
+				length: value => mnHandFull({ height: value }, currentStyles),
+				radius: value => mnHandFull({ radius: value }, currentStyles)
 			}
 		},
 		scHand: {
 			leaf: {
 				color: value => scHandLeaf({ color: value }, currentStyles),
 				width: value => scHandLeaf({ width: value }, currentStyles),
-				length: value => scHandLeaf({ height: value }, currentStyles)
+				length: value => scHandLeaf({ height: value }, currentStyles),
+				radius: value => scHandLeaf({ radius: value }, currentStyles)
 			},
 			tail: {
 				color: value => scHandTail({ color: value }, currentStyles),
 				width: value => scHandTail({ width: value }, currentStyles),
-				length: value => scHandTail({ height: value }, currentStyles)
+				length: value => scHandTail({ height: value }, currentStyles),
+				radius: value => scHandTail({ radius: value }, currentStyles)
 			},
 			full: {
 				color: value => scHandFull({ color: value }, currentStyles),
 				width: value => scHandFull({ width: value }, currentStyles),
-				length: value => scHandFull({ height: value }, currentStyles)
+				length: value => scHandFull({ height: value }, currentStyles),
+				radius: value => scHandFull({ radius: value }, currentStyles)
 			}
 		}
 	};

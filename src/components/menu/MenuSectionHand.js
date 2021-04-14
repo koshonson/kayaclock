@@ -84,6 +84,18 @@ const MenuSectionHand = ({ title, type }) => {
 						setStyle(style.leaf.length(value))
 					}
 				/>
+				<Input
+					label="Radius"
+					display={true}
+					type="range"
+					min="0"
+					max="50"
+					step="5"
+					value={leaf.radius}
+					onChange={({ target: { value } }) =>
+						setStyle(style.leaf.radius(value))
+					}
+				/>
 			</div>
 			<div className="menu-section-content-block-label">Tail:</div>
 			<div className="menu-section-content-block">
@@ -112,12 +124,24 @@ const MenuSectionHand = ({ title, type }) => {
 					label="Length"
 					display={true}
 					type="range"
-					min="5"
+					min="1"
 					max="24"
-					step="1"
+					step="0.5"
 					value={tail.height}
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.length(value))
+					}
+				/>
+				<Input
+					label="Radius"
+					display={true}
+					type="range"
+					min="0"
+					max="50"
+					step="5"
+					value={tail.radius}
+					onChange={({ target: { value } }) =>
+						setStyle(style.tail.radius(value))
 					}
 				/>
 			</div>
