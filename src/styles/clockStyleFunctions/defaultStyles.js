@@ -2,9 +2,9 @@ export const defaultStyles = {
 	bgColor: 'rgb(249, 249, 249)',
 	clockBoardSize: 80,
 	clockHands: {
-		hr: 1,
+		hr: 0,
 		mn: 1,
-		sc: 1
+		sc: 0
 	},
 	hrHand: {
 		leaf: {
