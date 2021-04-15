@@ -89,9 +89,9 @@ const setClockCellStyle = ({ type, styles }, currentStyles) => {
 };
 
 const singleCellStyler = (type, currentStyles) => {
-	const changeStyle = styles => setClockCellStyle({ type, styles }, currentStyles);
 	return OPTIONS.reduce((a, v) => {
-		a[v] = value => changeStyle({ [v]: value });
+		a[v] = value =>
+			setClockCellStyle({ type, styles: { [v]: value } }, currentStyles);
 		return a;
 	}, {});
 };

@@ -13,10 +13,7 @@ const ClockBoard = ({ menuVisible }) => {
 		<div className={`clock centered ${menuVisible ? 'clock-open-menu' : ''}`}>
 			<div style={getClockBoardStyle(style)}>
 				<ClockCell type="topLeft" />
-				<ClockCell type="top">
-					<div className="pin pin-top-one"></div>
-					<div className="pin pin-top-two"></div>
-				</ClockCell>
+				<ClockCell type="top" />
 				<ClockCell type="topRight" />
 				<ClockCell type="left" />
 				<ClockCell type="center">
@@ -24,9 +21,7 @@ const ClockBoard = ({ menuVisible }) => {
 				</ClockCell>
 				<ClockCell type="right" />
 				<ClockCell type="bottomLeft" />
-				<ClockCell type="bottom">
-					<div className="pin pin-bottom-one"></div>
-				</ClockCell>
+				<ClockCell type="bottom" />
 				<ClockCell type="bottomRight" />
 			</div>
 		</div>

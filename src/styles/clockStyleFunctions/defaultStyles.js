@@ -190,5 +190,85 @@ export const defaultStyles = {
 			shadowOffset: 0,
 			zIndex: 1
 		}
+	},
+	clockPins: {
+		top: [
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			},
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			},
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			}
+		],
+		left: [
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			}
+		],
+		right: [
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			}
+		],
+		bottom: [
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			},
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0,
+				bottomRadius: 0
+			}
+		]
 	}
 };

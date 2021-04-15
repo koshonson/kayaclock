@@ -8,7 +8,7 @@ import Input from '../generic/Input';
 
 const MenuSectionCells = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
-	const style = clockCellStyler('outer', currentStyles);
+	const style = clockCellStyler('edges', currentStyles);
 	const { topLeft } = currentStyles.clockCells;
 
 	return (
