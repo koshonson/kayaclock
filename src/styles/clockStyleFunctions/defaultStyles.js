@@ -1,6 +1,11 @@
 export const defaultStyles = {
 	bgColor: 'rgb(249, 249, 249)',
 	clockBoardSize: 80,
+	// clockHands: {
+	// 	hr: 1,
+	// 	mn: 1,
+	// 	sc: 1
+	// },
 	hrHand: {
 		leaf: {
 			color: 'rgb(255, 0, 0)',
@@ -191,63 +196,19 @@ export const defaultStyles = {
 			zIndex: 1
 		}
 	},
+	defaultPin: {
+		color: 'rgb(0,0,0)',
+		width: 1,
+		length: 10,
+		gap: 1,
+		offset: 0,
+		innerRadius: 0,
+		outerRadius: 0
+	},
 	clockPins: {
-		top: [
-			{
-				color: 'rgb(0,0,0)',
-				width: 1,
-				length: 9,
-				gap: 1,
-				offset: 0,
-				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
-			},
-			{
-				color: 'rgb(0,0,0)',
-				width: 1,
-				length: 9,
-				gap: 1,
-				offset: 0,
-				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
-			},
-			{
-				color: 'rgb(0,0,0)',
-				width: 1,
-				length: 9,
-				gap: 1,
-				offset: 0,
-				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
-			}
-		],
-		left: [
-			{
-				color: 'rgb(0,0,0)',
-				width: 1,
-				length: 9,
-				gap: 1,
-				offset: 0,
-				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
-			}
-		],
-		right: [
-			{
-				color: 'rgb(0,0,0)',
-				width: 1,
-				length: 9,
-				gap: 1,
-				offset: 0,
-				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
-			}
-		],
+		top: [],
+		left: [],
+		right: [],
 		bottom: [
 			{
 				color: 'rgb(0,0,0)',
@@ -256,8 +217,7 @@ export const defaultStyles = {
 				gap: 1,
 				offset: 0,
 				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
+				outerRadius: 0
 			},
 			{
 				color: 'rgb(0,0,0)',
@@ -266,8 +226,7 @@ export const defaultStyles = {
 				gap: 1,
 				offset: 0,
 				innerRadius: 50,
-				outerRadius: 0,
-				bottomRadius: 0
+				outerRadius: 0
 			}
 		]
 	}

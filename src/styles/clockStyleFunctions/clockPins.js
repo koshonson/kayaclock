@@ -122,3 +122,71 @@ export const getClockPinsStyle = ({ type, style, numPins, pinIdx }) => {
 
 	return { ...baseStyles, ...dimensionStyles, ...positionStyles, ...radiusStyles };
 };
+
+const setClockCellStyle = ({ type, pinIdx, styles }, currentStyles) => {
+	const newStyles = currentStyles.clockPins;
+	newStyles[type][pinIdx] = { ...newStyles[type][pinIdx], ...styles };
+	return newStyles;
+};
+
+const STYLE_PARAMS = [
+	'color',
+	'width',
+	'length',
+	'gap',
+	'offset',
+	'innerRadius',
+	'outerRadius'
+];
+
+const singlePinStyler = ({ type, pinIdx }, currentStyles) => {
+	return STYLE_PARAMS.reduce((a, v) => {
+		a[v] = value =>
+			setClockCellStyle(
+				{ type, pinIdx, styles: { [v]: value } },
+				currentStyles
+			);
+		return a;
+	}, {});
+};
+
+const pinsInCellStyler = ({ type }, currentStyles) => {
+	return STYLE_PARAMS.reduce((a, v) => {
+		a[v] = value => {
+			currentStyles.clockPins[type].forEach((pin, pinIdx) => {
+				setClockCellStyle(
+					{ type, pinIdx, styles: { [v]: value } },
+					currentStyles
+				);
+			});
+		};
+		return a;
+	}, {});
+};
+
+const batchPinStyler = currentStyles => {
+	return STYLE_PARAMS.reduce((a, v) => {
+		a[v] = value => {
+			['top', 'left', 'right', 'bottom'].forEach(type => {
+				currentStyles.clockPins[type].forEach((pin, pinIdx) => {
+					setClockCellStyle(
+						{ type, pinIdx, styles: { [v]: value } },
+						currentStyles
+					);
+				});
+			});
+		};
+		return a;
+	}, {});
+};
+
+export const clockPinStyler = ({ type, pinIdx }, currentStyles) => {
+	if (type === 'batch') {
+		return batchPinStyler(currentStyles);
+	} else {
+		if (pinIdx === 3) {
+			return pinsInCellStyler({ type }, currentStyles);
+		}
+		return singlePinStyler({ type, pinIdx }, currentStyles);
+	}
+};

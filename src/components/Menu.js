@@ -6,6 +6,7 @@ import MenuSectionGeneral from './menu/MenuSectionGeneral';
 import MenuSectionHand from './menu/MenuSectionHand';
 import MenuSectionCap from './menu/MenuSectionCap';
 import MenuSectionCells from './menu/MenuSectionCells';
+import MenuSectionPins from './menu/MenuSectionPins';
 
 const Menu = ({ menuVisible }) => {
 	const [expanded, setExpanded] = useState('general');
@@ -20,6 +21,7 @@ const Menu = ({ menuVisible }) => {
 				<MenuSectionHand title="Second Hand" type="scHand" />
 				<MenuSectionCap title="Clock Cap" type="clockCap" />
 				<MenuSectionCells title="Clock Cells" type="clockCells" />
+				<MenuSectionPins title="Clock Pins" type="clockPins" />
 			</menuContext.Provider>
 		</div>
 	);
