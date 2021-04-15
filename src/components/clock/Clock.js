@@ -1,17 +1,34 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { useTime } from '../../hooks/useTime';
+import { styleContext } from '../../context/styleContext';
 
 import ClockHand from './ClockHand';
 import ClockCap from './ClockCap';
 
 const Clock = () => {
-	const { hrRotation, mnRotation, scRotation } = useTime();
+	const rotations = useTime();
+	const {
+		style: { clockHands }
+	} = useContext(styleContext);
+
+	const renderHands = () => {
+		const hands = Object.keys(clockHands);
+		return hands
+			.filter(hand => clockHands[hand])
+			.map(hand => {
+				return (
+					<ClockHand
+						rotation={rotations[hand]}
+						type={`${hand}Hand`}
+						key={`${hand}-hand`}
+					/>
+				);
+			});
+	};
 
 	return (
 		<Fragment>
-			<ClockHand rotation={mnRotation} type="mnHand" />
-			<ClockHand rotation={hrRotation} type="hrHand" />
-			<ClockHand rotation={scRotation} type="scHand" />
+			{renderHands()}
 			<ClockCap />
 		</Fragment>
 	);

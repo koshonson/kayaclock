@@ -26,8 +26,8 @@ export const useTime = () => {
 	}, [time]);
 
 	return {
-		hrRotation,
-		mnRotation,
-		scRotation
+		hr: hrRotation,
+		mn: mnRotation,
+		sc: scRotation
 	};
 };
