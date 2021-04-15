@@ -1,4 +1,3 @@
-import '../styles/clock.css';
 import React, { useContext } from 'react';
 import { styleContext } from '../context/styleContext';
 import { getClockBoardStyle } from '../styles/clockStyleFunctions';
