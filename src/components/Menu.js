@@ -1,6 +1,6 @@
 import '../styles/menu.css';
-import React, { useState } from 'react';
-import { menuContext } from '../context/menuContext';
+import React, { useState, useContext } from 'react';
+import { menuContext, styleContext } from '../context';
 
 import MenuSectionGeneral from './menu/MenuSectionGeneral';
 import MenuSectionHand from './menu/MenuSectionHand';

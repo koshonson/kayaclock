@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { menuContext } from '../../context/menuContext';
+import { menuContext } from '../../context';
 
 import Button from '../generic/Button';
 import { ArrowIcon } from '../../styles/icons';

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../context/styleContext';
-import { getClockBoardStyle } from '../styles/clockStyleFunctions';
+import { styleContext } from '../context';
+import { getClockBoardStyle } from '../styles';
 
 import ClockCell from './clock/ClockCell';
 import Clock from './clock/Clock';

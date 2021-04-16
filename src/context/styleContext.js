@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { defaultStyles } from '../styles/clockStyleFunctions';
+import { defaultStyles } from '../styles';
 
 export const styleContext = createContext(defaultStyles);

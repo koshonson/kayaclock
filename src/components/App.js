@@ -1,7 +1,7 @@
 import '../styles/main.css';
 import React, { useState } from 'react';
-import { defaultStyles, getCanvasBg } from '../styles/clockStyleFunctions';
-import { styleContext } from '../context/styleContext';
+import { defaultStyles, getCanvasBg } from '../styles';
+import { styleContext } from '../context';
 
 import { MenuIcon } from '../styles/icons';
 

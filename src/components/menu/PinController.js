@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { styleContext } from '../../context/styleContext';
+import { styleContext } from '../../context';
 
 const PinController = props => {
 	const type = props.type === 'batch' ? 'top' : props.type;

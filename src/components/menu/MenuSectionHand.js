@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../context/styleContext';
-import { clockHandStyler } from '../../styles/clockStyleFunctions';
+import { styleContext } from '../../context';
+import { clockHandStyler } from '../../styles';
 import { rgbToHex, hexToRgb } from '../../util';
 
 import MenuSection from './MenuSection';

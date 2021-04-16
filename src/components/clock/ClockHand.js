@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from 'react';
-import { styleContext } from '../../context/styleContext';
-import { getClockHandStyle } from '../../styles/clockStyleFunctions';
+import { styleContext } from '../../context';
+import { getClockHandStyle } from '../../styles';
 
 const ClockHand = ({ rotation, type }) => {
 	const { style } = useContext(styleContext);
