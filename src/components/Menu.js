@@ -8,20 +8,42 @@ import MenuSectionCap from './menu/MenuSectionCap';
 import MenuSectionCells from './menu/MenuSectionCells';
 import MenuSectionPins from './menu/MenuSectionPins';
 
+const HAND_LABELS = {
+	hr: 'Hour Hand',
+	mn: 'Minute Hand',
+	sc: 'Second Hand'
+};
+
 const Menu = ({ menuVisible }) => {
 	const [expanded, setExpanded] = useState('general');
+	const {
+		style: { clockHands }
+	} = useContext(styleContext);
+
+	const renderHandsMenu = () => {
+		const hands = Object.keys(clockHands);
+		return hands
+			.filter(hand => clockHands[hand])
+			.map(hand => {
+				return (
+					<MenuSectionHand
+						type={`${hand}Hand`}
+						key={`${hand}Hand-menu`}
+						title={HAND_LABELS[hand]}
+					/>
+				);
+			});
+	};
 
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
 			<div className="menu-heading">Customize Clock</div>
 			<menuContext.Provider value={{ expanded, setExpanded }}>
 				<MenuSectionGeneral title="General" type="general" />
-				<MenuSectionHand title="Hour Hand" type="hrHand" />
-				<MenuSectionHand title="Minute Hand" type="mnHand" />
-				<MenuSectionHand title="Second Hand" type="scHand" />
-				<MenuSectionCap title="Clock Cap" type="clockCap" />
 				<MenuSectionCells title="Clock Cells" type="clockCells" />
 				<MenuSectionPins title="Clock Pins" type="clockPins" />
+				{renderHandsMenu()}
+				<MenuSectionCap title="Clock Cap" type="clockCap" />
 			</menuContext.Provider>
 		</div>
 	);
