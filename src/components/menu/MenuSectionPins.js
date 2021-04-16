@@ -6,7 +6,7 @@ import { rgbToHex, hexToRgb } from '../../util';
 import MenuSection from './MenuSection';
 import PinController from './PinController';
 import Input from '../generic/Input';
-import CellSelector from './CellSelector';
+import PinSelector from './PinSelector';
 
 const MenuSectionPins = ({ type, title }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
@@ -41,7 +41,7 @@ const MenuSectionPins = ({ type, title }) => {
 					}
 				/> */}
 				<div style={{ height: '10vmin', width: '10vmin' }}>
-					<CellSelector />
+					<PinSelector />
 				</div>
 				<PinController type="top" />
 			</div>

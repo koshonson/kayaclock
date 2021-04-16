@@ -1,21 +1,22 @@
 import React, { Fragment } from 'react';
-import { CELLS, useCellSelector } from '../../hooks';
+import { CELLS, usePinSelector } from '../../hooks';
 
 import Cell from './CellSelectorCell';
 
-const CellSelector = () => {
-	const { setHovered, getCellState, selectCells, mode } = useCellSelector();
+const PinSelector = () => {
+	const { setHovered, getCellState, selectCells, mode } = usePinSelector();
 
 	const renderCells = () => {
 		return CELLS.ALL.map(code => {
+			const active = CELLS.EDGES.includes(code);
 			return (
 				<Cell
 					code={code}
 					key={`csCell-${code}`}
-					active={true}
+					active={active}
 					setHovered={setHovered}
 					cellState={getCellState(code)}
-					selectCells={selectCells}
+					selectCells={active ? selectCells : () => {}}
 				/>
 			);
 		});
@@ -29,4 +30,4 @@ const CellSelector = () => {
 	);
 };
 
-export default CellSelector;
+export default PinSelector;

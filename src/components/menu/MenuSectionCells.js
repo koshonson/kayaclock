@@ -5,6 +5,7 @@ import { rgbToHex, hexToRgb } from '../../util';
 
 import MenuSection from './MenuSection';
 import Input from '../generic/Input';
+import CellSelector from './CellSelector';
 
 const MenuSectionCells = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
@@ -36,6 +37,9 @@ const MenuSectionCells = ({ title, type }) => {
 						setStyle(style.borderWidth(value))
 					}
 				/>
+			</div>
+			<div style={{ height: '10vmin', width: '10vmin' }}>
+				<CellSelector />
 			</div>
 		</MenuSection>
 	);
