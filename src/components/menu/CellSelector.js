@@ -1,42 +1,30 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { CELLS, useCellSelector } from '../../hooks';
 
-const cellStyle = {
-	border: '1px solid black',
-	borderRadius: '50%',
-	cursor: 'pointer'
-};
+import Cell from './CellSelectorCell';
 
 const CellSelector = () => {
-	const handleMouseEnter = ({ target: { style } }) => {
-		style.backgroundColor = 'yellow';
-	};
-	const handleMouseLeave = ({ target: { style } }) => {
-		style.backgroundColor = 'white';
+	const { setHovered, getCellState, selectCells, mode } = useCellSelector();
+
+	const renderCells = () => {
+		return CELLS.ALL.map(code => {
+			return (
+				<Cell
+					code={code}
+					key={`csCell-${code}`}
+					setHovered={setHovered}
+					cellState={getCellState(code)}
+					selectCells={selectCells}
+				/>
+			);
+		});
 	};
 
 	return (
-		<div
-			style={{
-				display: 'grid',
-				gridTemplateColumns: 'repeat(3, 1fr)',
-				width: '100%',
-				height: '100%'
-			}}
-		>
-			<div
-				style={cellStyle}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
-			></div>
-			<div style={cellStyle}></div>
-			<div style={cellStyle}></div>
-			<div style={cellStyle}></div>
-			<div style={{ ...cellStyle, backgroundColor: 'black' }}></div>
-			<div style={cellStyle}></div>
-			<div style={cellStyle}></div>
-			<div style={cellStyle}></div>
-			<div style={cellStyle}></div>
-		</div>
+		<Fragment>
+			<div className="cell-selector">{renderCells()}</div>
+			<div>{mode}</div>
+		</Fragment>
 	);
 };
 

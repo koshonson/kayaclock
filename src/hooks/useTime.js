@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react';
 
-const parseHours = hr => {
-	if (hr >= 12) return hr - 12;
-	return hr;
-};
-
 export const useTime = () => {
 	const [time, setTime] = useState(new Date());
 	const [mnRotation, setMnRotation] = useState(0);

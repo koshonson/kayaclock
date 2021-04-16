@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { useTime } from '../../hooks/useTime';
+import { useTime } from '../../hooks';
 import { styleContext } from '../../context';
 
 import ClockHand from './ClockHand';
