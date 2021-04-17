@@ -14,11 +14,24 @@ const HAND_LABELS = {
 	sc: 'Second Hand'
 };
 
+const SELECTORS = {
+	cellCell: 'center',
+	cellPin: 'edges',
+	pin: 'batch'
+};
+
 const Menu = ({ menuVisible }) => {
 	const [expanded, setExpanded] = useState('general');
+	const [modes, setModes] = useState(SELECTORS);
 	const {
 		style: { clockHands }
 	} = useContext(styleContext);
+
+	const changeMode = {
+		cellCell: value => setModes({ ...modes, cellCell: value }),
+		cellPin: value => setModes({ ...modes, cellPin: value }),
+		pin: value => setModes({ ...modes, pin: value })
+	};
 
 	const renderHandsMenu = () => {
 		const hands = Object.keys(clockHands);
@@ -38,7 +51,9 @@ const Menu = ({ menuVisible }) => {
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
 			<div className="menu-heading">Customize Clock</div>
-			<menuContext.Provider value={{ expanded, setExpanded }}>
+			<menuContext.Provider
+				value={{ expanded, setExpanded, modes, changeMode }}
+			>
 				<MenuSectionGeneral title="General" type="general" />
 				<MenuSectionCells title="Clock Cells" type="clockCells" />
 				<MenuSectionPins title="Clock Pins" type="clockPins" />
