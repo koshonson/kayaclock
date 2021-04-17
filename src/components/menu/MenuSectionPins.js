@@ -5,7 +5,9 @@ import { rgbToHex, hexToRgb } from '../../util';
 
 import MenuSection from './MenuSection';
 import PinController from './PinController';
+import PinSelectorCell from './PinSelectorCell';
 import Input from '../generic/Input';
+import Box from '../generic/Box';
 import PinSelector from './PinSelector';
 
 const MenuSectionPins = ({ type, title }) => {
@@ -40,10 +42,13 @@ const MenuSectionPins = ({ type, title }) => {
 						setStyle(style.offset(value))
 					}
 				/> */}
-				<div style={{ height: '10vmin', width: '10vmin' }}>
+				<Box size="10">
 					<PinSelector />
-				</div>
-				<PinController type="top" />
+				</Box>
+				<Box size="10">
+					<PinSelectorCell mode="bottom" />
+				</Box>
+				<PinController type="bottom" />
 			</div>
 		</MenuSection>
 	);
