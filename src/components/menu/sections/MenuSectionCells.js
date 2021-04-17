@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../context';
-import { clockCellStyler } from '../../styles';
-import { rgbToHex, hexToRgb } from '../../util';
+import { styleContext } from '../../../context';
+import { clockCellStyler } from '../../../styles';
+import { rgbToHex, hexToRgb } from '../../../util';
 
 import MenuSection from './MenuSection';
-import Input from '../generic/Input';
-import CellSelector from './CellSelector';
+import Input from '../../generic/Input';
+import Selector from '../cell_selector/Selector';
 
 const MenuSectionCells = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
@@ -39,7 +39,7 @@ const MenuSectionCells = ({ title, type }) => {
 				/>
 			</div>
 			<div style={{ height: '10vmin', width: '10vmin' }}>
-				<CellSelector />
+				<Selector />
 			</div>
 		</MenuSection>
 	);

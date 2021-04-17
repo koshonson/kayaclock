@@ -6,7 +6,7 @@ const { OUTER, EDGES, CORNERS, DEFAULT_MODE } = CELLS;
 const DEFAULT_HIGHLIGHTED = { cells: [], mode: '' };
 const DEFAULT_SELECTED = { cells: [DEFAULT_MODE], mode: DEFAULT_MODE };
 
-export const useCellSelector = () => {
+export const useCellSelectorCells = () => {
 	const [hovered, setHovered] = useState(null);
 	const [highlighted, setHighlighted] = useState(DEFAULT_HIGHLIGHTED);
 	const [selected, setSelected] = useState(DEFAULT_SELECTED);

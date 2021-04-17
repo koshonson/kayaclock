@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../context';
-import { clockHandStyler } from '../../styles';
-import { rgbToHex, hexToRgb } from '../../util';
+import { styleContext } from '../../../context';
+import { clockHandStyler } from '../../../styles';
+import { rgbToHex, hexToRgb } from '../../../util';
 
 import MenuSection from './MenuSection';
-import Input from '../generic/Input';
+import Input from '../../generic/Input';
 
 const MenuSectionHand = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);

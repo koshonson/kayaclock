@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../context';
-import { clockPinStyler } from '../../styles';
-import { rgbToHex, hexToRgb } from '../../util';
+import { styleContext } from '../../../context';
+import { clockPinStyler } from '../../../styles';
+import { rgbToHex, hexToRgb } from '../../../util';
 
 import MenuSection from './MenuSection';
-import PinController from './PinController';
-import PinSelectorCell from './PinSelectorCell';
-import Input from '../generic/Input';
-import Box from '../generic/Box';
-import PinSelector from './PinSelector';
+import Controller from '../pin_selector/Controller';
+import Selector from '../pin_selector/Selector';
+import DetailCell from '../pin_selector/DetailCell';
+import Input from '../../generic/Input';
+import Box from '../../generic/Box';
 
 const MenuSectionPins = ({ type, title }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
@@ -43,12 +43,12 @@ const MenuSectionPins = ({ type, title }) => {
 					}
 				/> */}
 				<Box size="10">
-					<PinSelector />
+					<Selector />
 				</Box>
 				<Box size="10">
-					<PinSelectorCell mode="bottom" />
+					<DetailCell mode="bottom" />
 				</Box>
-				<PinController type="bottom" />
+				<Controller type="bottom" />
 			</div>
 		</MenuSection>
 	);

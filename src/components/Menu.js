@@ -2,11 +2,11 @@ import '../styles/menu.css';
 import React, { useState, useContext } from 'react';
 import { menuContext, styleContext } from '../context';
 
-import MenuSectionGeneral from './menu/MenuSectionGeneral';
-import MenuSectionHand from './menu/MenuSectionHand';
-import MenuSectionCap from './menu/MenuSectionCap';
-import MenuSectionCells from './menu/MenuSectionCells';
-import MenuSectionPins from './menu/MenuSectionPins';
+import MenuSectionGeneral from './menu/sections/MenuSectionGeneral';
+import MenuSectionHand from './menu/sections/MenuSectionHand';
+import MenuSectionCap from './menu/sections/MenuSectionCap';
+import MenuSectionCells from './menu/sections/MenuSectionCells';
+import MenuSectionPins from './menu/sections/MenuSectionPins';
 
 const HAND_LABELS = {
 	hr: 'Hour Hand',

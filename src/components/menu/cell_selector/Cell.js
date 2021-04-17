@@ -10,7 +10,7 @@ const stateColors = {
 	selected: 'green'
 };
 
-const CellSelectorCell = ({ code, cellState, setHovered, selectCells, active }) => {
+const Cell = ({ code, cellState, setHovered, selectCells, active }) => {
 	const cursor = active ? 'pointer' : 'default';
 	const baseBg = code === 'center' ? 'black' : 'white';
 	const backgroundColor = cellState ? stateColors[cellState] : baseBg;
@@ -25,4 +25,4 @@ const CellSelectorCell = ({ code, cellState, setHovered, selectCells, active }) 
 	);
 };
 
-export default CellSelectorCell;
+export default Cell;

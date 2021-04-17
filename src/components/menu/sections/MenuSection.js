@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { menuContext } from '../../context';
+import { menuContext } from '../../../context';
 
-import Button from '../generic/Button';
-import { ArrowIcon } from '../../styles/icons';
+import Button from '../../generic/Button';
+import { ArrowIcon } from '../../../styles/icons';
 
 const MenuSection = ({ children, title, type }) => {
 	const { expanded, setExpanded } = useContext(menuContext);

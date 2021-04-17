@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { styleContext } from '../../context';
+import { styleContext } from '../../../context';
 
-const PinController = props => {
+const Controller = props => {
 	const type = props.type === 'batch' ? 'top' : props.type;
 	const { style, setStyle } = useContext(styleContext);
 	const [numPins, setNumPins] = useState(style.clockPins[type].length);
@@ -59,4 +59,4 @@ const PinController = props => {
 	);
 };
 
-export default PinController;
+export default Controller;

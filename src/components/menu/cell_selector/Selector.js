@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import { CELLS, useCellSelector } from '../../hooks';
+import { CELLS, useCellSelectorCells } from '../../../hooks';
 
-import Cell from './CellSelectorCell';
+import Cell from './Cell';
 
-const CellSelector = () => {
-	const { setHovered, getCellState, selectCells, mode } = useCellSelector();
+const Selector = () => {
+	const { setHovered, getCellState, selectCells, mode } = useCellSelectorCells();
 
 	const renderCells = () => {
 		return CELLS.ALL.map(code => {
@@ -29,4 +29,4 @@ const CellSelector = () => {
 	);
 };
 
-export default CellSelector;
+export default Selector;

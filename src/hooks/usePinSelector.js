@@ -1,44 +1,62 @@
 import { useState, useEffect } from 'react';
 import { useKeyWatch } from './useKeyWatch';
-import { CELLS } from './cellSelectorConfig';
+import { PINS } from './pinSelectorConfig';
+import { spreadIdx } from '../util';
 
-const { EDGES } = CELLS;
-const DEFAULT_HIGHLIGHTED = { cells: [], mode: '' };
-const DEFAULT_SELECTED = { cells: [...EDGES], mode: 'edges' };
+const { VERTICAL: V, HORIZONTAL: H } = PINS;
+const EMPTY = { pins: [], mode: '' };
 
-export const usePinSelector = () => {
+const getPinName = ({ type, idx, numPins }) => {
+	const pinNames = type === 'top' || type === 'bottom' ? V : H;
+	return pinNames.names[numPins][idx];
+};
+
+export const usePinSelector = ({ numPins, type }) => {
 	const [hovered, setHovered] = useState(null);
-	const [highlighted, setHighlighted] = useState(DEFAULT_HIGHLIGHTED);
-	const [selected, setSelected] = useState(DEFAULT_SELECTED);
-	const { shift } = useKeyWatch();
+	const [highlighted, setHighlighted] = useState(EMPTY);
+	const [selected, setSelected] = useState({
+		mode: 'batch',
+		pins: spreadIdx(numPins)
+	});
+	const { ctrl, shift } = useKeyWatch();
 
 	useEffect(() => {
-		if (!hovered || !EDGES.includes(hovered)) {
-			setHighlighted(DEFAULT_HIGHLIGHTED);
+		if (hovered === null) {
+			setHighlighted(EMPTY);
 			return;
 		}
 		if (shift) {
-			setHighlighted({ mode: 'edges', cells: [...EDGES] });
+			setHighlighted({ mode: 'batch', pins: spreadIdx(numPins) });
 		} else {
-			setHighlighted({ mode: hovered, cells: [hovered] });
+			setHighlighted({
+				mode: getPinName({ numPins, type, idx: hovered }),
+				pins: [hovered]
+			});
 		}
-	}, [hovered, shift]);
+	}, [hovered, shift, ctrl]);
 
-	const getCellState = code => {
-		if (highlighted.cells.some(value => value === code)) return 'highlighted';
-		if (selected.cells.some(value => value === code)) return 'selected';
+	useEffect(() => {
+		setSelected({
+			mode: 'batch',
+			pins: spreadIdx(numPins)
+		});
+	}, [numPins]);
+
+	const getPinState = idx => {
+		if (highlighted.pins.includes(idx)) return 'highlighted';
+		if (selected.pins.includes(idx)) return 'selected';
 		return null;
 	};
 
-	const selectCells = code => {
+	const selectPins = code => {
 		if (code !== hovered) return;
 		setSelected({ ...highlighted });
 	};
 
 	return {
 		setHovered,
-		getCellState,
-		selectCells,
+		getPinState,
+		selectPins,
 		mode: selected.mode
 	};
 };

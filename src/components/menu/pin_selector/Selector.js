@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import { CELLS, usePinSelector } from '../../hooks';
+import { CELLS, useCellSelectorPins } from '../../../hooks';
 
-import Cell from './CellSelectorCell';
+import Cell from '../cell_selector/Cell';
 
-const PinSelector = () => {
-	const { setHovered, getCellState, selectCells, mode } = usePinSelector();
+const Selector = () => {
+	const { setHovered, getCellState, selectCells, mode } = useCellSelectorPins();
 
 	const renderCells = () => {
 		return CELLS.ALL.map(code => {
@@ -30,4 +30,4 @@ const PinSelector = () => {
 	);
 };
 
-export default PinSelector;
+export default Selector;
