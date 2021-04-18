@@ -1,10 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
+import { menuContext } from '../../../context';
 import { CELLS, useCellSelectorCells } from '../../../hooks';
 
 import Cell from './Cell';
 
 const Selector = () => {
-	const { setHovered, getCellState, selectCells, mode } = useCellSelectorCells();
+	const { changeMode } = useContext(menuContext);
+	const { setHovered, getCellState, selectCells } = useCellSelectorCells(
+		changeMode
+	);
 
 	const renderCells = () => {
 		return CELLS.ALL.map(code => {
@@ -24,7 +28,6 @@ const Selector = () => {
 	return (
 		<Fragment>
 			<div className="cell-selector">{renderCells()}</div>
-			<div>{mode}</div>
 		</Fragment>
 	);
 };

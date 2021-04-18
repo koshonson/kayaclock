@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Box = ({ size, children }) => {
+const Box = ({ size, style, children }) => {
 	return (
-		<div style={{ height: `${size}vmin`, width: `${size}vmin` }}>{children}</div>
+		<div style={{ height: `${size}vmin`, width: `${size}vmin`, ...style }}>
+			{children}
+		</div>
 	);
 };
 
