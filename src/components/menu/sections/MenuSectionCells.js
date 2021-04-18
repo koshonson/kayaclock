@@ -15,7 +15,7 @@ const MenuSectionCells = ({ title, type }) => {
 	return (
 		<MenuSection title={title} type={type}>
 			<div className="menu-section-content-block-label">Inner:</div>
-			<div className="menu-section-content-block">
+			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Border Color"
 					display={false}

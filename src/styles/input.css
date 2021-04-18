@@ -1,0 +1,38 @@
+.color-input-rect {
+	width: 6vmin;
+	height: 3.5vmin;
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+}
+
+.color-input-circle {
+	width: 3.5vmin;
+	height: 3.5vmin;
+	background-color: transparent;
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.color-input-circle::-webkit-color-swatch {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 50%;
+}
+
+.color-input-circle::-moz-color-swatch {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 50%;
+}
+
+.color-input-rect::-webkit-color-swatch {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.color-input-rect::-moz-color-swatch {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+input[type='range'] {
+	width: 5vw;
+}

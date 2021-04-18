@@ -1,3 +1,4 @@
+import '../../../styles/input.css';
 import React, { useContext } from 'react';
 import { menuContext } from '../../../context';
 

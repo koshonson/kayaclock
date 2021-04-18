@@ -1,40 +1,5 @@
-.color-input-rect {
-	width: 6vmin;
-	height: 3.5vmin;
-	background-color: transparent;
-	border: 0;
-	cursor: pointer;
-}
-
-.color-input-circle {
-	width: 3.5vmin;
-	height: 3.5vmin;
-	background-color: transparent;
-	border: 0;
-	border-radius: 50%;
-	cursor: pointer;
-}
-
-.color-input-circle::-webkit-color-swatch {
-	border: 1px solid rgba(0, 0, 0, 0.25);
-	border-radius: 50%;
-}
-
-.color-input-circle::-moz-color-swatch {
-	border: 1px solid rgba(0, 0, 0, 0.25);
-	border-radius: 50%;
-}
-
-.color-input-rect::-webkit-color-swatch {
-	border: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.color-input-rect::-moz-color-swatch {
-	border: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-input[type='range'] {
-	width: 5vw;
+button {
+	position: relative;
 }
 
 .menu {
@@ -68,6 +33,33 @@ input[type='range'] {
 
 .menu-btn:hover {
 	transform: scale(1.1);
+}
+
+.random-btn {
+	cursor: pointer;
+	width: 50px;
+	height: 3.5vmin;
+	margin-left: 2vmin;
+	margin-bottom: 1.2vmin;
+	background: transparent;
+	border: none;
+}
+
+.random-btn:hover {
+	transform: scale(1.1);
+	transition: 0.4s;
+}
+
+.toggle-hand-btn {
+	cursor: pointer;
+	height: 3.5vmin;
+	padding: 0 1vmin;
+	font-size: 75%;
+	font-weight: 200;
+	margin: 0 5px 0 0;
+	color: rgb(100, 100, 100);
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .menu-heading {
@@ -128,7 +120,7 @@ input[type='range'] {
 
 .menu-section-content.open {
 	height: initial;
-	padding-bottom: 1vmin;
+	padding-bottom: 2.5vmin;
 }
 
 .menu-section-content.closed {
@@ -138,6 +130,14 @@ input[type='range'] {
 
 .menu-section-content-block {
 	display: flex;
+	align-items: center;
+}
+
+.ai-fe {
+	align-items: flex-end;
+}
+
+.jc-sb {
 	justify-content: space-between;
 }
 

@@ -1,33 +1,35 @@
 import React, { useContext } from 'react';
 import { styleContext } from '../../../context';
-import { clockHandToggler, canvasBgStyler } from '../../../styles';
+import { clockHandToggler, canvasBgStyler, getRandomBg } from '../../../styles';
 
 import MenuSection from './MenuSection';
+import RandomButton from '../buttons/RandomButton';
 import ColorGradient from '../../generic/ColorGradient';
+import HandToggler from '../buttons/HandToggler';
 
 const MenuSectionGeneral = ({ title, type }) => {
 	const { style, setStyle } = useContext(styleContext);
 	const toggleHand = clockHandToggler(style);
 	const setCanvasBg = canvasBgStyler(style);
-	const { bgColorPrimary, bgColorSecondary } = style;
+	const { bgColorPrimary, bgColorSecondary, clockHands } = style;
 
 	return (
 		<MenuSection title={title} type={type}>
-			<ColorGradient
-				label="Background"
-				colors={{ bgColorPrimary, bgColorSecondary }}
-				setStyle={setStyle}
-				setCanvasBg={setCanvasBg}
-			/>
-			<div style={{ display: 'flex' }}>
-				<button onClick={() => setStyle(toggleHand.hr())}>Hour Hand</button>
-				<button onClick={() => setStyle(toggleHand.mn())}>
-					Minute Hand
-				</button>
-				<button onClick={() => setStyle(toggleHand.sc())}>
-					Second Hand
-				</button>
+			<div className="menu-section-content-block ai-fe">
+				<ColorGradient
+					label="Background"
+					colors={{ bgColorPrimary, bgColorSecondary }}
+					setStyle={setStyle}
+					setCanvasBg={setCanvasBg}
+				/>
+				<RandomButton run={() => setStyle(getRandomBg())} />
 			</div>
+			<label>Clock Hands:</label>
+			<HandToggler
+				setStyle={setStyle}
+				toggleHand={toggleHand}
+				handState={clockHands}
+			/>
 		</MenuSection>
 	);
 };

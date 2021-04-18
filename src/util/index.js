@@ -1,3 +1,9 @@
-export { combineColorTransparency, rgbToHex, hexToRgb } from './color';
-export { lightenColor } from './random';
+export {
+	combineColorTransparency,
+	rgbToHex,
+	hexToRgb,
+	randomRgbColor,
+	lightenColor,
+	getContrastBaseColor
+} from './color';
 export { spreadIdx } from './misc';

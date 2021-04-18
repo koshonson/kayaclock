@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const MenuIcon = ({ className }) => {
+export const MenuIcon = ({ className, fill }) => {
 	return (
 		<svg
-			style={{ width: '3vmin', fill: 'grey' }}
+			style={{ width: '3vmin', fill }}
 			height="3vmin"
 			viewBox="0 0 512 512"
 			width="3vmin"

@@ -1,5 +1,9 @@
 export { defaultStyles } from './clockStyleFunctions/defaultStyles';
-export { getCanvasBg, canvasBgStyler } from './clockStyleFunctions/canvas';
+export {
+	getCanvasBg,
+	canvasBgStyler,
+	getRandomBg
+} from './clockStyleFunctions/canvas';
 export { getClockHandStyle, clockHandStyler } from './clockStyleFunctions/clockHand';
 export { getClockCapStyle, clockCapStyler } from './clockStyleFunctions/clockCap';
 export { getClockCellStyle, clockCellStyler } from './clockStyleFunctions/clockCell';
