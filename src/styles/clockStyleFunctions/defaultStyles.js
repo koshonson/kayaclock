@@ -1,5 +1,6 @@
 export const defaultStyles = {
-	bgColor: 'rgb(249, 249, 249)',
+	bgColorPrimary: 'rgb(249, 249, 249)',
+	bgColorSecondary: 'rgb(230, 230, 225)',
 	clockBoardSize: 80,
 	clockHands: {
 		hr: 1,

@@ -1,24 +1,23 @@
 import React, { useContext } from 'react';
 import { styleContext } from '../../../context';
-import { clockHandToggler } from '../../../styles';
-import { rgbToHex, hexToRgb } from '../../../util';
+import { clockHandToggler, canvasBgStyler } from '../../../styles';
 
 import MenuSection from './MenuSection';
-import Input from '../../generic/Input';
+import ColorGradient from '../../generic/ColorGradient';
 
 const MenuSectionGeneral = ({ title, type }) => {
 	const { style, setStyle } = useContext(styleContext);
 	const toggleHand = clockHandToggler(style);
+	const setCanvasBg = canvasBgStyler(style);
+	const { bgColorPrimary, bgColorSecondary } = style;
 
 	return (
 		<MenuSection title={title} type={type}>
-			<Input
+			<ColorGradient
 				label="Background"
-				type="color"
-				value={rgbToHex(style.bgColor)}
-				onChange={({ target: { value } }) => {
-					setStyle({ bgColor: hexToRgb(value) });
-				}}
+				colors={{ bgColorPrimary, bgColorSecondary }}
+				setStyle={setStyle}
+				setCanvasBg={setCanvasBg}
 			/>
 			<div style={{ display: 'flex' }}>
 				<button onClick={() => setStyle(toggleHand.hr())}>Hour Hand</button>

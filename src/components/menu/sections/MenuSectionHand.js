@@ -15,7 +15,7 @@ const MenuSectionHand = ({ title, type }) => {
 		<MenuSection title={title} type={type}>
 			<div className="menu-section-content-block">
 				<Input
-					className="color"
+					className="color-input-circle"
 					label="Color"
 					display={false}
 					type="color"
@@ -55,6 +55,7 @@ const MenuSectionHand = ({ title, type }) => {
 					label="Color"
 					display={false}
 					type="color"
+					className="color-input-circle"
 					value={rgbToHex(leaf.color)}
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.color(hexToRgb(value)))
@@ -103,6 +104,7 @@ const MenuSectionHand = ({ title, type }) => {
 					label="Color"
 					display={false}
 					type="color"
+					className="color-input-circle"
 					value={rgbToHex(tail.color)}
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.color(hexToRgb(value)))
