@@ -52,7 +52,7 @@ export const getClockCellStyle = ({ style, type }) => {
 	const brdCol = colComb(borderColor, borderOpacity);
 	const bgCol = colComb(bgColor, bgOpacity);
 	const shdCol1 = colComb(shadowColor, shadowOpacity);
-	const shdCol2 = colComb(shadowColor, shadowOpacity + 0.2);
+	const shdCol2 = colComb(shadowColor, +shadowOpacity + 0.2);
 
 	const boxShadow1 = placeShadowsByType({
 		type,
@@ -121,4 +121,50 @@ export const clockCellStyler = (type, currentStyles) => {
 		default:
 			return singleCellStyler(type, currentStyles);
 	}
+};
+
+const getReferenceCell = type => {
+	const REFERENCES = {
+		corners: 'topLeft',
+		edges: 'top',
+		outer: 'topLeft'
+	};
+	return REFERENCES[type] ? REFERENCES[type] : type;
+};
+
+const formatCellSelectorType = type => {
+	const LABELS = {
+		corners: 'corner',
+		edges: 'edge',
+		outer: 'outer',
+		center: 'center',
+		topLeft: 'top-left',
+		top: 'top',
+		topRight: 'top-right',
+		left: 'left',
+		right: 'right',
+		bottomLeft: 'bottom-left',
+		bottom: 'bottom',
+		bottomRight: 'bottom-right'
+	};
+	return LABELS[type];
+};
+
+const getCellSelectorLabel = type => {
+	const label = formatCellSelectorType(type);
+	switch (type) {
+		case 'corners':
+		case 'edges':
+		case 'outer':
+			return `all ${label} cells`;
+		default:
+			return `the ${label} cell`;
+	}
+};
+
+export const cellSelectorReferences = () => {
+	return {
+		getCellSelectorLabel,
+		getReferenceCell
+	};
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Input = ({ label, display, className, ...props }) => {
+const Input = ({ label, display, style, className, ...props }) => {
 	return (
-		<div className="input-block">
+		<div className="input-block" style={style}>
 			<label>
 				{label} {display ? `(${props.value})` : ''}
 			</label>

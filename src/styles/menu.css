@@ -128,17 +128,44 @@ button {
 	visibility: collapse;
 }
 
+.menu-section-content > label {
+	font-size: 100%;
+	position: relative;
+	color: rgba(0, 0, 0, 0.5);
+	margin: 5px 0 0 5px;
+	padding-bottom: 2px;
+}
+
+.menu-section-content > label:after {
+	position: absolute;
+	content: '';
+	height: 1px;
+	width: 15px;
+	bottom: 5px;
+	left: 5px;
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
 .menu-section-content-block {
 	display: flex;
 	align-items: center;
+	margin: 0 4px;
 }
 
 .ai-fe {
 	align-items: flex-end;
 }
 
+.ai-st {
+	align-items: stretch;
+}
+
 .jc-sb {
 	justify-content: space-between;
+}
+
+.jc-fs {
+	justify-content: flex-start;
 }
 
 .menu-section-content-block-label {
@@ -160,4 +187,33 @@ button {
 	grid-template-columns: repeat(3, 1fr);
 	width: 100%;
 	height: 100%;
+}
+
+.cell-selector-display {
+	position: relative;
+	font-weight: 200;
+	font-size: 90%;
+	margin-left: 2vmin;
+	flex: 1;
+}
+
+.cell-selector-display:after {
+	position: absolute;
+	content: '';
+	width: 85%;
+	height: 1px;
+	background-color: rgba(0, 0, 0, 0.05);
+	bottom: 0;
+	left: 5%;
+}
+
+.cell-selector-display-info {
+	font-weight: 200;
+	font-size: 70%;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.cell-selector-display-info span {
+	font-size: 110%;
+	font-weight: 600;
 }

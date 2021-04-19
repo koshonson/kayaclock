@@ -24,7 +24,7 @@ const MenuSectionGeneral = ({ title, type }) => {
 				/>
 				<RandomButton run={() => setStyle(getRandomBg())} />
 			</div>
-			<label>Clock Hands:</label>
+			<label>Clock Hands</label>
 			<HandToggler
 				setStyle={setStyle}
 				toggleHand={toggleHand}

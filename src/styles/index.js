@@ -6,7 +6,11 @@ export {
 } from './clockStyleFunctions/canvas';
 export { getClockHandStyle, clockHandStyler } from './clockStyleFunctions/clockHand';
 export { getClockCapStyle, clockCapStyler } from './clockStyleFunctions/clockCap';
-export { getClockCellStyle, clockCellStyler } from './clockStyleFunctions/clockCell';
+export {
+	getClockCellStyle,
+	clockCellStyler,
+	cellSelectorReferences
+} from './clockStyleFunctions/clockCell';
 export {
 	getClockBoardStyle,
 	clockHandToggler
