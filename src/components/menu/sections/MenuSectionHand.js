@@ -11,11 +11,23 @@ const MenuSectionHand = ({ title, type }) => {
 	const { [type]: style } = clockHandStyler(currentStyles);
 	const { leaf, tail } = currentStyles[type];
 
+	const renderSwapBtn = zIdx => {
+		if (type === 'scHand') return <></>;
+		return (
+			<div
+				className="swap-btn"
+				onClick={() => setStyle(style.full.swap(zIdx))}
+			>
+				{zIdx === 10 ? 'Pull above' : 'Push below'}
+			</div>
+		);
+	};
+
 	return (
 		<MenuSection title={title} type={type}>
-			<div className="menu-section-content-block">
+			<div className="menu-section-content-block jc-sb">
 				<Input
-					className="color-input-circle"
+					className="color-input-rect"
 					label="Color"
 					display={false}
 					type="color"
@@ -48,9 +60,10 @@ const MenuSectionHand = ({ title, type }) => {
 						setStyle(style.leaf.length(value))
 					}
 				/>
+				{renderSwapBtn(leaf.zIndex)}
 			</div>
-			<div className="menu-section-content-block-label">Leaf:</div>
-			<div className="menu-section-content-block">
+			<label>Leaf</label>
+			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
 					display={false}
@@ -98,8 +111,8 @@ const MenuSectionHand = ({ title, type }) => {
 					}
 				/>
 			</div>
-			<div className="menu-section-content-block-label">Tail:</div>
-			<div className="menu-section-content-block">
+			<label>Tail</label>
+			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
 					display={false}

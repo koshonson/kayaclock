@@ -126,7 +126,12 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				color: value => hrHandFull({ color: value }, currentStyles),
 				width: value => hrHandFull({ width: value }, currentStyles),
 				length: value => hrHandFull({ height: value }, currentStyles),
-				radius: value => hrHandFull({ radius: value }, currentStyles)
+				radius: value => hrHandFull({ radius: value }, currentStyles),
+				swap: zIdx => {
+					const zIndex = zIdx === 10 ? 20 : 10;
+					hrHandFull({ zIndex }, currentStyles);
+					mnHandFull({ zIndex: zIdx }, currentStyles);
+				}
 			}
 		},
 		mnHand: {
@@ -146,7 +151,12 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				color: value => mnHandFull({ color: value }, currentStyles),
 				width: value => mnHandFull({ width: value }, currentStyles),
 				length: value => mnHandFull({ height: value }, currentStyles),
-				radius: value => mnHandFull({ radius: value }, currentStyles)
+				radius: value => mnHandFull({ radius: value }, currentStyles),
+				swap: zIdx => {
+					const zIndex = zIdx === 10 ? 20 : 10;
+					const newStyles = mnHandFull({ zIndex: zIndex }, currentStyles);
+					return hrHandFull({ zIndex: zIdx }, newStyles);
+				}
 			}
 		},
 		scHand: {

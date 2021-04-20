@@ -265,3 +265,17 @@ button {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 	background-color: rgba(0, 0, 0, 0.1);
 }
+
+.swap-btn {
+	cursor: pointer;
+	font-size: 70%;
+	padding: 1vmin;
+	border-radius: 1vmin;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.swap-btn:hover {
+	background-color: rgba(0, 0, 0, 0.15);
+	transition: 0.4s;
+}

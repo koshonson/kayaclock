@@ -12,14 +12,14 @@ export const defaultStyles = {
 			color: 'rgb(255, 0, 0)',
 			width: 1.8,
 			height: 23,
-			zIndex: 15,
+			zIndex: 10,
 			radius: 0
 		},
 		tail: {
 			color: 'rgb(255, 0, 0)',
 			width: 1.8,
 			height: 5,
-			zIndex: 15,
+			zIndex: 10,
 			radius: 0
 		}
 	},
@@ -28,14 +28,14 @@ export const defaultStyles = {
 			color: 'rgb(0,0,255)',
 			width: 2,
 			height: 35,
-			zIndex: 10,
+			zIndex: 20,
 			radius: 0
 		},
 		tail: {
 			color: 'rgb(0,0,255)',
 			width: 2,
 			height: 4,
-			zIndex: 10,
+			zIndex: 20,
 			radius: 0
 		}
 	},
@@ -44,14 +44,14 @@ export const defaultStyles = {
 			color: 'rgb(0,255,0)',
 			width: 0.2,
 			height: 10,
-			zIndex: 20,
+			zIndex: 30,
 			radius: 0
 		},
 		tail: {
 			color: 'rgb(0,255,0)',
 			width: 0.2,
 			height: 2.5,
-			zIndex: 20,
+			zIndex: 30,
 			radius: 0
 		}
 	},
@@ -60,7 +60,7 @@ export const defaultStyles = {
 			color: 'rgb(255, 255, 0)',
 			size: 2,
 			radius: 50,
-			zIndex: 30
+			zIndex: 35
 		},
 		outer: {
 			color: 'rgb(255, 0, 0)',
