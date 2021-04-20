@@ -16,7 +16,7 @@ const Controller = props => {
 		const newStyles = style.clockPins;
 		if (newStyles[type].length === 3) return;
 		newStyles[type].push(newPin());
-		setStyle(newStyles);
+		setStyle({ clockPins: newStyles });
 		setNumPins(numPins + 1);
 	};
 
@@ -24,7 +24,7 @@ const Controller = props => {
 		const newStyles = style.clockPins;
 		if (newStyles[type].length === 0) return;
 		newStyles[type].pop();
-		setStyle(newStyles);
+		setStyle({ clockPins: newStyles });
 		const newNumPins = numPins - 1 < 0 ? 0 : numPins - 1;
 		setNumPins(newNumPins);
 	};

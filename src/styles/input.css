@@ -120,6 +120,29 @@ input[type='range']:focus::-ms-fill-upper {
 	background: rgba(0, 0, 0, 0.1);
 }
 
+select {
+	cursor: pointer;
+	appearance: none;
+	padding: 0 1vmin 0 0.5vmin;
+	font-size: 70%;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+}
+
+select:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+input[type='checkbox'] {
+	width: 2vmin;
+	height: 2vmin;
+	padding: 5px;
+}
+
+option {
+	font-size: 70%;
+}
+
 .input-block label {
 	margin: 0;
 	color: rgba(0, 0, 0, 0.5);

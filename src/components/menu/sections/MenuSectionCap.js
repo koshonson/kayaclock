@@ -5,20 +5,42 @@ import { rgbToHex, hexToRgb } from '../../../util';
 
 import MenuSection from './MenuSection';
 import Input from '../../generic/Input';
+import Select from '../../generic/Select';
 
 const MenuSectionCap = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
 	const style = clockCapStyler(currentStyles);
 	const { inner, outer } = currentStyles.clockCap;
 
+	const renderSnapAndRotate = ({ type, radius, rotation }) => {
+		if (radius > 40) return <></>;
+		return (
+			<>
+				<Select
+					label="Snap to"
+					onChange={({ target: { value } }) =>
+						setStyle(style[type].snap(value))
+					}
+				/>
+				<Input
+					label="Rotate"
+					type="checkbox"
+					checked={rotation}
+					onChange={() => setStyle(style[type].rotation())}
+				/>
+			</>
+		);
+	};
+
 	return (
 		<MenuSection title={title} type={type}>
-			<div className="menu-section-content-block-label">Inner:</div>
-			<div className="menu-section-content-block">
+			<label>Inner</label>
+			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
 					display={false}
 					type="color"
+					className="color-input-rect"
 					value={rgbToHex(inner.color)}
 					onChange={({ target: { value } }) =>
 						setStyle(style.inner.color(hexToRgb(value)))
@@ -49,12 +71,34 @@ const MenuSectionCap = ({ title, type }) => {
 					}
 				/>
 			</div>
-			<div className="menu-section-content-block-label">Outer:</div>
-			<div className="menu-section-content-block">
+			<div
+				className="menu-section-content-block jc-sb"
+				style={{ marginTop: '1vmin' }}
+			>
+				<Input
+					label="Vertical placement"
+					type="range"
+					value={inner.zIndex}
+					min="5"
+					max="35"
+					step="10"
+					onChange={({ target: { value } }) =>
+						setStyle(style.inner.zIndex(+value))
+					}
+				/>
+				{renderSnapAndRotate({
+					type: 'inner',
+					radius: inner.radius,
+					rotation: inner.rotation
+				})}
+			</div>
+			<label>Outer</label>
+			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
 					display={false}
 					type="color"
+					className="color-input-rect"
 					value={rgbToHex(outer.color)}
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.color(hexToRgb(value)))
@@ -66,7 +110,7 @@ const MenuSectionCap = ({ title, type }) => {
 					type="range"
 					value={outer.size}
 					min="0"
-					max="25"
+					max="20"
 					step="0.5"
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.size(value))
@@ -84,6 +128,27 @@ const MenuSectionCap = ({ title, type }) => {
 						setStyle(style.outer.radius(value))
 					}
 				/>
+			</div>
+			<div
+				className="menu-section-content-block jc-sb"
+				style={{ marginTop: '1vmin' }}
+			>
+				<Input
+					label="Vertical placement"
+					type="range"
+					value={outer.zIndex}
+					min="5"
+					max="35"
+					step="10"
+					onChange={({ target: { value } }) =>
+						setStyle(style.outer.zIndex(+value))
+					}
+				/>
+				{renderSnapAndRotate({
+					type: 'outer',
+					radius: outer.radius,
+					rotation: outer.rotation
+				})}
 			</div>
 		</MenuSection>
 	);

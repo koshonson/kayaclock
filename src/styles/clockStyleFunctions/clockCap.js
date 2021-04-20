@@ -23,24 +23,42 @@ const setClockCapStyle = ({ type, styles }, currentStyles) => {
 };
 
 const setInnerClockCapStyle = (styles, currentStyles) => {
-	setClockCapStyle({ type: 'inner', styles }, currentStyles);
+	return setClockCapStyle({ type: 'inner', styles }, currentStyles);
 };
 
 const setOuterClockCapStyle = (styles, currentStyles) => {
-	setClockCapStyle({ type: 'outer', styles }, currentStyles);
+	return setClockCapStyle({ type: 'outer', styles }, currentStyles);
 };
 
 export const clockCapStyler = (currentStyles = defaultStyles) => {
 	return {
 		inner: {
-			color: value => setInnerClockCapStyle({ color: value }, currentStyles),
-			size: value => setInnerClockCapStyle({ size: value }, currentStyles),
-			radius: value => setInnerClockCapStyle({ radius: value }, currentStyles)
+			color: color => setInnerClockCapStyle({ color }, currentStyles),
+			size: size => setInnerClockCapStyle({ size }, currentStyles),
+			radius: radius => setInnerClockCapStyle({ radius }, currentStyles),
+			snap: value => {
+				const snap = value === 'null' ? null : value;
+				return setInnerClockCapStyle({ snap }, currentStyles);
+			},
+			zIndex: zIndex => setInnerClockCapStyle({ zIndex }, currentStyles),
+			rotation: () => {
+				const { rotation } = currentStyles.clockCap.inner;
+				return setInnerClockCapStyle({ rotation: !rotation }, currentStyles);
+			}
 		},
 		outer: {
-			color: value => setOuterClockCapStyle({ color: value }, currentStyles),
-			size: value => setOuterClockCapStyle({ size: value }, currentStyles),
-			radius: value => setOuterClockCapStyle({ radius: value }, currentStyles)
+			color: color => setOuterClockCapStyle({ color }, currentStyles),
+			size: size => setOuterClockCapStyle({ size }, currentStyles),
+			radius: radius => setOuterClockCapStyle({ radius }, currentStyles),
+			snap: value => {
+				const snap = value === 'null' ? null : value;
+				return setOuterClockCapStyle({ snap }, currentStyles);
+			},
+			zIndex: zIndex => setOuterClockCapStyle({ zIndex }, currentStyles),
+			rotation: () => {
+				const { rotation } = currentStyles.clockCap.inner;
+				return setOuterClockCapStyle({ rotation: !rotation }, currentStyles);
+			}
 		}
 	};
 };

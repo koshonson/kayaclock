@@ -9,14 +9,14 @@ export const defaultStyles = {
 	},
 	hrHand: {
 		leaf: {
-			color: 'rgb(255, 0, 0)',
+			color: 'rgb(200, 20, 20)',
 			width: 1.8,
 			height: 23,
 			zIndex: 10,
 			radius: 0
 		},
 		tail: {
-			color: 'rgb(255, 0, 0)',
+			color: 'rgb(200, 20, 20)',
 			width: 1.8,
 			height: 5,
 			zIndex: 10,
@@ -25,14 +25,14 @@ export const defaultStyles = {
 	},
 	mnHand: {
 		leaf: {
-			color: 'rgb(0,0,255)',
+			color: 'rgb(210, 40, 40)',
 			width: 2,
 			height: 35,
 			zIndex: 20,
 			radius: 0
 		},
 		tail: {
-			color: 'rgb(0,0,255)',
+			color: 'rgb(210, 40, 40)',
 			width: 2,
 			height: 4,
 			zIndex: 20,
@@ -41,14 +41,14 @@ export const defaultStyles = {
 	},
 	scHand: {
 		leaf: {
-			color: 'rgb(0,255,0)',
+			color: 'rgb(180,100,100)',
 			width: 0.2,
-			height: 10,
+			height: 13,
 			zIndex: 30,
 			radius: 0
 		},
 		tail: {
-			color: 'rgb(0,255,0)',
+			color: 'rgb(180,100,100)',
 			width: 0.2,
 			height: 2.5,
 			zIndex: 30,
@@ -57,16 +57,20 @@ export const defaultStyles = {
 	},
 	clockCap: {
 		inner: {
-			color: 'rgb(255, 255, 0)',
-			size: 2,
-			radius: 50,
-			zIndex: 35
+			color: 'rgb(180,100,100)',
+			size: 1,
+			radius: 25,
+			zIndex: 35,
+			snap: 'sc',
+			rotation: true
 		},
 		outer: {
 			color: 'rgb(255, 0, 0)',
-			size: 4,
+			size: 0,
 			radius: 50,
-			zIndex: 15
+			zIndex: 15,
+			snap: null,
+			rotation: false
 		}
 	},
 	clockCells: {
@@ -211,10 +215,19 @@ export const defaultStyles = {
 			{
 				color: 'rgb(0,0,0)',
 				width: 1,
-				length: 9,
+				length: 10,
 				gap: 1,
 				offset: 0,
-				innerRadius: 50,
+				innerRadius: 0,
+				outerRadius: 0
+			},
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 10,
+				gap: 1,
+				offset: 0,
+				innerRadius: 0,
 				outerRadius: 0
 			}
 		],
@@ -224,19 +237,10 @@ export const defaultStyles = {
 			{
 				color: 'rgb(0,0,0)',
 				width: 1,
-				length: 9,
+				length: 10,
 				gap: 1,
 				offset: 0,
-				innerRadius: 50,
-				outerRadius: 0
-			},
-			{
-				color: 'rgb(0,0,0)',
-				width: 1,
-				length: 9,
-				gap: 1,
-				offset: 0,
-				innerRadius: 50,
+				innerRadius: 0,
 				outerRadius: 0
 			}
 		]

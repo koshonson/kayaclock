@@ -128,7 +128,7 @@ export const getClockPinsStyle = ({ type, style, numPins, pinIdx }) => {
 const setClockCellStyle = ({ type, pinIdx, styles }, currentStyles) => {
 	const newStyles = currentStyles.clockPins;
 	newStyles[type][pinIdx] = { ...newStyles[type][pinIdx], ...styles };
-	return newStyles;
+	currentStyles.defaultPin = { ...currentStyles.defaultPin, ...styles };
 };
 
 const STYLE_PARAMS = [

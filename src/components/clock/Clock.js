@@ -29,7 +29,7 @@ const Clock = () => {
 	return (
 		<Fragment>
 			{renderHands()}
-			<ClockCap />
+			<ClockCap rotations={rotations} />
 		</Fragment>
 	);
 };
