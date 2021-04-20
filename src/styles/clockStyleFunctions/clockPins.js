@@ -1,3 +1,5 @@
+import { PINS } from '../../hooks/';
+
 const getVminValue = value => `${value}vmin`;
 const getPctValue = value => `${value}%`;
 const getOffsetValue = offset => getVminValue(0 - offset);
@@ -124,6 +126,7 @@ export const getClockPinsStyle = ({ type, style, numPins, pinIdx }) => {
 };
 
 const setClockCellStyle = ({ type, pinIdx, styles }, currentStyles) => {
+	console.log(type);
 	const newStyles = currentStyles.clockPins;
 	newStyles[type][pinIdx] = { ...newStyles[type][pinIdx], ...styles };
 	return newStyles;

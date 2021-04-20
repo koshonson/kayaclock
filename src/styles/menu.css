@@ -160,6 +160,10 @@ button {
 	align-items: stretch;
 }
 
+.jc-sa {
+	justify-content: space-around;
+}
+
 .jc-sb {
 	justify-content: space-between;
 }
@@ -197,6 +201,11 @@ button {
 	flex: 1;
 }
 
+.cell-selector-display span {
+	font-weight: 400;
+	font-size: 100%;
+}
+
 .cell-selector-display:after {
 	position: absolute;
 	content: '';
@@ -216,4 +225,43 @@ button {
 .cell-selector-display-info span {
 	font-size: 110%;
 	font-weight: 600;
+}
+
+.pin-selector {
+	display: flex;
+	font-size: 75%;
+	line-height: 2vmin;
+}
+
+.pin-selector-btn {
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 2px 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+
+.pin-selector-btn:hover {
+	background-color: rgba(0, 0, 0, 0.15);
+	transition: 0.4s;
+}
+
+.pin-selector > .pin-selector-btn:first-of-type {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.pin-selector > .pin-selector-btn:last-of-type {
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.pin-selector-value {
+	padding: 2px 10px;
+	display: flex;
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	background-color: rgba(0, 0, 0, 0.1);
 }

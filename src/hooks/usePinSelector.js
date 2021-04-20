@@ -11,7 +11,7 @@ const getPinName = ({ type, idx, numPins }) => {
 	return pinNames.names[numPins][idx];
 };
 
-export const usePinSelector = ({ numPins, type }) => {
+export const usePinSelector = ({ numPins, type, changeMode }) => {
 	const [hovered, setHovered] = useState(null);
 	const [highlighted, setHighlighted] = useState(EMPTY);
 	const [selected, setSelected] = useState({
@@ -40,6 +40,7 @@ export const usePinSelector = ({ numPins, type }) => {
 			mode: 'batch',
 			pins: spreadIdx(numPins)
 		});
+		changeMode.cellPin({ pinIdx: 3, label: 'all' });
 	}, [numPins]);
 
 	const getPinState = idx => {
@@ -51,12 +52,14 @@ export const usePinSelector = ({ numPins, type }) => {
 	const selectPins = code => {
 		if (code !== hovered) return;
 		setSelected({ ...highlighted });
+		const pinIdx = highlighted.pins.length > 1 ? 3 : highlighted.pins[0];
+		const pinLabel = highlighted.mode === 'batch' ? 'all' : highlighted.mode;
+		changeMode.cellPin({ pinIdx, label: pinLabel });
 	};
 
 	return {
 		setHovered,
 		getPinState,
-		selectPins,
-		mode: selected.mode
+		selectPins
 	};
 };

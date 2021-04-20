@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../../context';
+import { styleContext, menuContext } from '../../../context';
 import { getClockPinsStyle } from '../../../styles';
 import { usePinSelector } from '../../../hooks';
 
@@ -10,14 +10,15 @@ const containerStyle = {
 	width: '100%',
 	height: '100%',
 	border: '4px solid black',
-	borderRadius: '50%'
+	borderRadius: '50%',
+	zIndex: 5
 };
 
 const pinStyle = {
 	color: 'rgb(0,0,0)',
-	width: 1,
-	length: 5,
-	gap: 1,
+	width: 0.6,
+	length: 3.5,
+	gap: 0.55,
 	offset: 0,
 	innerRadius: 0,
 	outerRadius: 0
@@ -27,8 +28,10 @@ const DetailCell = ({ mode: type }) => {
 	const {
 		style: { clockPins }
 	} = useContext(styleContext);
+	const { changeMode } = useContext(menuContext);
 	const numPins = clockPins[type].length;
-	const { setHovered, getPinState, selectPins, mode } = usePinSelector({
+	const { setHovered, getPinState, selectPins } = usePinSelector({
+		changeMode,
 		numPins,
 		type
 	});

@@ -16,7 +16,7 @@ const HAND_LABELS = {
 
 const SELECTORS = {
 	cellCell: 'center',
-	cellPin: 'edges',
+	cellPin: { mode: 'batch', pinIdx: 3, label: 'all' },
 	pin: 'batch'
 };
 
@@ -29,7 +29,9 @@ const Menu = ({ menuVisible }) => {
 
 	const changeMode = {
 		cellCell: value => setModes({ ...modes, cellCell: value }),
-		cellPin: value => setModes({ ...modes, cellPin: value }),
+		cellPin: (value, original = modes.cellPin) => {
+			setModes({ ...modes, cellPin: { ...original, ...value } });
+		},
 		pin: value => setModes({ ...modes, pin: value })
 	};
 

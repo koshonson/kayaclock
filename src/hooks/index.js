@@ -1,4 +1,5 @@
 export { CELLS } from './cellSelectorConfig';
+export { PINS } from './pinSelectorConfig';
 export { useCellSelectorCells } from './useCellSelectorCells';
 export { useCellSelectorPins } from './useCellSelectorPins';
 export { usePinSelector } from './usePinSelector';

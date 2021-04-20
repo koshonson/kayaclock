@@ -4,9 +4,9 @@ import { CELLS } from './cellSelectorConfig';
 
 const { EDGES } = CELLS;
 const DEFAULT_HIGHLIGHTED = { cells: [], mode: '' };
-const DEFAULT_SELECTED = { cells: [...EDGES], mode: 'edges' };
+const DEFAULT_SELECTED = { cells: [...EDGES], mode: 'batch' };
 
-export const useCellSelectorPins = () => {
+export const useCellSelectorPins = changeMode => {
 	const [hovered, setHovered] = useState(null);
 	const [highlighted, setHighlighted] = useState(DEFAULT_HIGHLIGHTED);
 	const [selected, setSelected] = useState(DEFAULT_SELECTED);
@@ -18,7 +18,7 @@ export const useCellSelectorPins = () => {
 			return;
 		}
 		if (shift) {
-			setHighlighted({ mode: 'edges', cells: [...EDGES] });
+			setHighlighted({ mode: 'batch', cells: [...EDGES] });
 		} else {
 			setHighlighted({ mode: hovered, cells: [hovered] });
 		}
@@ -33,12 +33,12 @@ export const useCellSelectorPins = () => {
 	const selectCells = code => {
 		if (code !== hovered) return;
 		setSelected({ ...highlighted });
+		changeMode.cellPin({ mode: highlighted.mode });
 	};
 
 	return {
 		setHovered,
 		getCellState,
-		selectCells,
-		mode: selected.mode
+		selectCells
 	};
 };

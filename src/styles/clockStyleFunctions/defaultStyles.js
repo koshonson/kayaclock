@@ -207,7 +207,17 @@ export const defaultStyles = {
 		outerRadius: 0
 	},
 	clockPins: {
-		top: [],
+		top: [
+			{
+				color: 'rgb(0,0,0)',
+				width: 1,
+				length: 9,
+				gap: 1,
+				offset: 0,
+				innerRadius: 50,
+				outerRadius: 0
+			}
+		],
 		left: [],
 		right: [],
 		bottom: [
