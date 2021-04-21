@@ -56,7 +56,7 @@ export const clockCapStyler = (currentStyles = defaultStyles) => {
 			},
 			zIndex: zIndex => setOuterClockCapStyle({ zIndex }, currentStyles),
 			rotation: () => {
-				const { rotation } = currentStyles.clockCap.inner;
+				const { rotation } = currentStyles.clockCap.outer;
 				return setOuterClockCapStyle({ rotation: !rotation }, currentStyles);
 			}
 		}

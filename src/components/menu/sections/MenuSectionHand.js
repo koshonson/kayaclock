@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { styleContext } from '../../../context';
 import { clockHandStyler } from '../../../styles';
-import { rgbToHex, hexToRgb } from '../../../util';
+import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
 import Input from '../../generic/Input';
@@ -35,18 +35,25 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.full.color(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.full.color(random.color()));
+					}}
 				/>
 				<Input
 					label="Width"
 					display={true}
 					type="range"
 					value={leaf.width}
-					min="0.2"
+					min="0"
 					max="4"
 					step="0.1"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.full.width(value))
 					}
+					randomize={() => {
+						setStyle(style.full.width(random.tenthNum(0, 4)));
+					}}
 				/>
 				<Input
 					label="Length"
@@ -59,6 +66,9 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.length(value))
 					}
+					randomize={() => {
+						setStyle(style.leaf.length(random.wholeNum(5, 49)));
+					}}
 				/>
 				{renderSwapBtn(leaf.zIndex)}
 			</div>
@@ -73,18 +83,24 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.color(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.leaf.color(random.color()));
+					}}
 				/>
 				<Input
 					label="Width"
 					display={true}
 					type="range"
 					value={leaf.width}
-					min="0.2"
+					min="0"
 					max="4"
 					step="0.1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.width(value))
 					}
+					randomize={() => {
+						setStyle(style.leaf.width(random.tenthNum(0, 4)));
+					}}
 				/>
 				<Input
 					label="Length"
@@ -97,6 +113,9 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.length(value))
 					}
+					randomize={() => {
+						setStyle(style.leaf.length(random.wholeNum(5, 49)));
+					}}
 				/>
 				<Input
 					label="Radius"
@@ -109,6 +128,9 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.radius(value))
 					}
+					randomize={() => {
+						setStyle(style.leaf.radius(random.radius()));
+					}}
 				/>
 			</div>
 			<label>Tail</label>
@@ -122,18 +144,24 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.color(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.tail.color(random.color()));
+					}}
 				/>
 				<Input
 					label="Width"
 					display={true}
 					type="range"
 					value={tail.width}
-					min="0.2"
+					min="0"
 					max="4"
 					step="0.1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.width(value))
 					}
+					randomize={() => {
+						setStyle(style.tail.width(random.tenthNum(0, 4)));
+					}}
 				/>
 				<Input
 					label="Length"
@@ -146,6 +174,9 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.length(value))
 					}
+					randomize={() => {
+						setStyle(style.tail.length(random.halfNum(1, 24)));
+					}}
 				/>
 				<Input
 					label="Radius"
@@ -158,6 +189,9 @@ const MenuSectionHand = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.radius(value))
 					}
+					randomize={() => {
+						setStyle(style.tail.radius(random.radius()));
+					}}
 				/>
 			</div>
 		</MenuSection>

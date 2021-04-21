@@ -22,7 +22,12 @@ const MenuSectionGeneral = ({ title, type }) => {
 					setStyle={setStyle}
 					setCanvasBg={setCanvasBg}
 				/>
-				<RandomButton run={() => setStyle(getRandomBg())} />
+				<RandomButton
+					randomize={getRandomBg}
+					size="15"
+					style={{ margin: '0 0 .5vmin 1vmin' }}
+					yShift="-50"
+				/>
 			</div>
 			<label>Clock Hands</label>
 			<HandToggler

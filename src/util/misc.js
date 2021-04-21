@@ -5,3 +5,7 @@ export const spreadIdx = num => {
 	}
 	return idxs;
 };
+
+export const toDecimals = (num, decimals = 0) => {
+	return Number(num).toFixed(+decimals);
+};

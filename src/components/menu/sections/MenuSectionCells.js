@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { styleContext, menuContext } from '../../../context';
 import { clockCellStyler, cellSelectorReferences } from '../../../styles';
-import { rgbToHex, hexToRgb } from '../../../util';
+import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
 import Input from '../../generic/Input';
@@ -31,6 +31,9 @@ const MenuSectionCells = ({ title, type }) => {
 						onChange={({ target: { value } }) =>
 							setStyle(style.shadowColor(hexToRgb(value)))
 						}
+						randomize={() => {
+							style.shadowColor(random.color());
+						}}
 					/>
 					<Input
 						label="Opacity"
@@ -40,9 +43,13 @@ const MenuSectionCells = ({ title, type }) => {
 						min="0"
 						max="1"
 						step="0.05"
+						decimals="2"
 						onChange={({ target: { value } }) =>
 							setStyle(style.shadowOpacity(value))
 						}
+						randomize={() => {
+							style.shadowOpacity(random.opacity());
+						}}
 					/>
 					<Input
 						label="Thickness"
@@ -55,6 +62,9 @@ const MenuSectionCells = ({ title, type }) => {
 						onChange={({ target: { value } }) =>
 							setStyle(style.shadowThickness(value))
 						}
+						randomize={() => {
+							style.shadowThickness(random.wholeNum(0, 80));
+						}}
 					/>
 					<Input
 						label="Blur"
@@ -67,6 +77,9 @@ const MenuSectionCells = ({ title, type }) => {
 						onChange={({ target: { value } }) =>
 							setStyle(style.shadowBlur(value))
 						}
+						randomize={() => {
+							setStyle(style.shadowBlur(random.wholeNum(0, 50)));
+						}}
 					/>
 				</div>
 			</>
@@ -92,6 +105,9 @@ const MenuSectionCells = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.borderColor(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.borderColor(random.color()));
+					}}
 				/>
 				<Input
 					label="Opacity"
@@ -101,9 +117,13 @@ const MenuSectionCells = ({ title, type }) => {
 					min="0"
 					max="1"
 					step="0.05"
+					decimals="2"
 					onChange={({ target: { value } }) =>
 						setStyle(style.borderOpacity(value))
 					}
+					randomize={() => {
+						setStyle(style.borderOpacity(random.opacity()));
+					}}
 				/>
 				<Input
 					label="Width"
@@ -116,6 +136,9 @@ const MenuSectionCells = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.borderWidth(value))
 					}
+					randomize={() => {
+						setStyle(style.borderWidth(random.wholeNum(0, 80)));
+					}}
 				/>
 				<Input
 					label="Radius"
@@ -128,6 +151,9 @@ const MenuSectionCells = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.borderRadius(value))
 					}
+					randomize={() => {
+						setStyle(style.borderRadius(random.radius()));
+					}}
 				/>
 			</div>
 			<label>Fill</label>
@@ -141,6 +167,9 @@ const MenuSectionCells = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.bgColor(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.bgColor(random.color()));
+					}}
 				/>
 				<Input
 					label="Opacity"
@@ -151,9 +180,13 @@ const MenuSectionCells = ({ title, type }) => {
 					min="0"
 					max="1"
 					step="0.05"
+					decimals="2"
 					onChange={({ target: { value } }) =>
 						setStyle(style.bgOpacity(value))
 					}
+					randomize={() => {
+						setStyle(style.bgOpacity(random.opacity()));
+					}}
 				/>
 			</div>
 			{renderShadowControls()}

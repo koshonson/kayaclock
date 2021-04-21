@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 import { styleContext } from '../../../context';
-import { getContrastBaseColor as contrastColor } from '../../../util';
 
 import Button from '../../generic/Button';
 import { RandomIcon } from '../../../styles/icons';
 
-const RandomButton = ({ run }) => {
-	const {
-		style: { bgColorPrimary: bgColor }
-	} = useContext(styleContext);
+const RandomButton = ({ randomize, style, size, yShift }) => {
+	const { setStyle } = useContext(styleContext);
 
 	return (
 		<Button
-			content={<RandomIcon fill={contrastColor(bgColor)} />}
+			content={
+				<RandomIcon fill="rgba(0,0,0,0.2)" size={size} yShift={yShift} />
+			}
 			className="random-btn"
-			onClick={run}
+			style={style}
+			onClick={() => setStyle(randomize())}
 		/>
 	);
 };

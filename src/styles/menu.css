@@ -14,6 +14,23 @@ button {
 	box-shadow: 1px 0 10px 0 rgba(0, 0, 0, 0.75);
 	height: 100%;
 	transition: all 1s;
+	overflow-y: auto;
+}
+
+.menu::-webkit-scrollbar {
+	width: 2px;
+}
+
+.menu::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.menu::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.menu::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }
 
 .menu-open {
@@ -25,7 +42,6 @@ button {
 	top: 1vmin;
 	left: 1.5vmin;
 	cursor: pointer;
-	background-color: transparent;
 	border: none;
 	transition: 0.4s;
 	z-index: 99;
@@ -37,15 +53,12 @@ button {
 
 .random-btn {
 	cursor: pointer;
-	width: 30px;
-	height: 2.75vmin;
-	margin-left: 2vmin;
-	margin-bottom: 1.2vmin;
 	background: transparent;
 	border: none;
 }
 
 .random-btn:hover {
+	fill: #fff;
 	transform: scale(1.1);
 	transition: 0.4s;
 }
@@ -112,6 +125,12 @@ button {
 	font-weight: 200;
 }
 
+.menu-section label > span {
+	font-size: 100%;
+	font-weight: 200;
+	color: rgba(0, 0, 0, 0.25);
+}
+
 .menu-section-content {
 	display: flex;
 	flex-direction: column;
@@ -158,6 +177,10 @@ button {
 
 .ai-st {
 	align-items: stretch;
+}
+
+.ai-ct {
+	align-items: center;
 }
 
 .jc-sa {

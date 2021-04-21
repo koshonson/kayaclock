@@ -6,4 +6,5 @@ export {
 	lightenColor,
 	getContrastBaseColor
 } from './color';
-export { spreadIdx } from './misc';
+export { random } from './random';
+export { spreadIdx, toDecimals } from './misc';

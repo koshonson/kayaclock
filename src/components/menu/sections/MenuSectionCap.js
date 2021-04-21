@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { styleContext } from '../../../context';
 import { clockCapStyler } from '../../../styles';
-import { rgbToHex, hexToRgb } from '../../../util';
+import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
 import Input from '../../generic/Input';
@@ -45,6 +45,9 @@ const MenuSectionCap = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.inner.color(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.inner.color(random.color()));
+					}}
 				/>
 				<Input
 					label="Size"
@@ -54,9 +57,13 @@ const MenuSectionCap = ({ title, type }) => {
 					min="0"
 					max="20"
 					step="0.5"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.inner.size(value))
 					}
+					randomize={() => {
+						setStyle(style.inner.size(random.halfNum(0, 20)));
+					}}
 				/>
 				<Input
 					label="Radius"
@@ -64,11 +71,14 @@ const MenuSectionCap = ({ title, type }) => {
 					type="range"
 					min="0"
 					max="50"
-					step="5"
+					step="1"
 					value={inner.radius}
 					onChange={({ target: { value } }) =>
 						setStyle(style.inner.radius(value))
 					}
+					randomize={() => {
+						setStyle(style.inner.radius(random.radius()));
+					}}
 				/>
 			</div>
 			<div
@@ -85,6 +95,9 @@ const MenuSectionCap = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.inner.zIndex(+value))
 					}
+					randomize={() => {
+						setStyle(style.inner.zIndex(random.zInxCap()));
+					}}
 				/>
 				{renderSnapAndRotate({
 					type: 'inner',
@@ -103,6 +116,9 @@ const MenuSectionCap = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.color(hexToRgb(value)))
 					}
+					randomize={() => {
+						setStyle(style.outer.color(random.color()));
+					}}
 				/>
 				<Input
 					label="Size"
@@ -115,6 +131,9 @@ const MenuSectionCap = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.size(value))
 					}
+					randomize={() => {
+						setStyle(style.outer.size(random.halfNum(0, 20)));
+					}}
 				/>
 				<Input
 					label="Radius"
@@ -122,11 +141,14 @@ const MenuSectionCap = ({ title, type }) => {
 					type="range"
 					min="0"
 					max="50"
-					step="5"
+					step="1"
 					value={outer.radius}
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.radius(value))
 					}
+					randomize={() => {
+						setStyle(style.outer.radius(random.radius()));
+					}}
 				/>
 			</div>
 			<div
@@ -143,6 +165,9 @@ const MenuSectionCap = ({ title, type }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.zIndex(+value))
 					}
+					randomize={() => {
+						setStyle(style.outer.zIndex(random.zInxCap()));
+					}}
 				/>
 				{renderSnapAndRotate({
 					type: 'outer',

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { styleContext, menuContext } from '../../../context';
 import { clockPinStyler } from '../../../styles';
-import { rgbToHex, hexToRgb } from '../../../util';
+import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
 import Selector from '../pin_selector/Selector';
@@ -33,7 +33,11 @@ const MenuSectionPins = ({ type, title }) => {
 				min="0"
 				max="10"
 				step="0.5"
+				decimals="1"
 				onChange={({ target: { value } }) => setStyle(style.gap(value))}
+				randomize={() => {
+					setStyle(style.gap(random.halfNum(0, 10)));
+				}}
 			/>
 		);
 	};
@@ -62,6 +66,9 @@ const MenuSectionPins = ({ type, title }) => {
 					onChange={({ target: { value } }) => {
 						setStyle(style.color(hexToRgb(value)));
 					}}
+					randomize={() => {
+						setStyle(style.color(random.color()));
+					}}
 				/>
 				<Input
 					label="Width"
@@ -71,9 +78,13 @@ const MenuSectionPins = ({ type, title }) => {
 					min="0"
 					max="10"
 					step="0.5"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.width(value))
 					}
+					randomize={() => {
+						setStyle(style.width(random.halfNum(0, 10)));
+					}}
 				/>
 				<Input
 					label="Length"
@@ -83,9 +94,13 @@ const MenuSectionPins = ({ type, title }) => {
 					min="0"
 					max="30"
 					step="0.5"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.length(value))
 					}
+					randomize={() => {
+						setStyle(style.length(random.halfNum(0, 30)));
+					}}
 				/>
 				<Input
 					label="Offset"
@@ -98,6 +113,9 @@ const MenuSectionPins = ({ type, title }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.offset(value))
 					}
+					randomize={() => {
+						setStyle(style.offset(random.halfNum(0, 15)));
+					}}
 				/>
 			</div>
 			<div
@@ -115,6 +133,9 @@ const MenuSectionPins = ({ type, title }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.innerRadius(value))
 					}
+					randomize={() => {
+						setStyle(style.innerRadius(random.radius()));
+					}}
 				/>
 				<Input
 					label="Outer Radius"
@@ -127,6 +148,9 @@ const MenuSectionPins = ({ type, title }) => {
 					onChange={({ target: { value } }) =>
 						setStyle(style.outerRadius(value))
 					}
+					randomize={() => {
+						setStyle(style.outerRadius(random.radius()));
+					}}
 				/>
 				{renderGapInput()}
 			</div>

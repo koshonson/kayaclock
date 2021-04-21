@@ -1,15 +1,15 @@
 import React from 'react';
 
-export const RandomIcon = ({ className, fill }) => {
+export const RandomIcon = ({ size, fill, yShift }) => {
 	return (
 		<svg
-			style={{ width: '3vmin', fill }}
+			style={{ width: `${size}px`, fill }}
 			height="100%"
 			viewBox="0 0 512 512"
 			width="100%"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			<g>
+			<g transform={`translate(0 ${yShift})`}>
 				<path
 					d="M234.693,270.09c8.754-20.745,16.175-37.019,22.266-48.82c4.568-8.754,8.854-16.13,12.851-22.126
 			c3.993-5.996,8.85-11.849,14.558-17.558c5.715-5.711,12.278-9.998,19.705-12.85c7.419-2.855,15.697-4.283,24.838-4.283h73.084
