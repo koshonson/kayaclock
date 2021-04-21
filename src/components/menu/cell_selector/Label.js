@@ -1,12 +1,25 @@
 import React from 'react';
 import { cellSelectorReferences } from '../../../styles';
+import RandomButton from '../buttons/RandomButton';
 
-const Label = ({ label }) => {
+const Label = ({ label, randomize }) => {
 	const { getCellSelectorLabel } = cellSelectorReferences();
 
 	return (
 		<div className="cell-selector-display">
-			Editing <strong>{getCellSelectorLabel(label)}</strong>.
+			<div style={{ display: 'flex', userSelect: 'none' }}>
+				Editing{' '}
+				<span style={{ paddingLeft: '3px' }}>
+					{getCellSelectorLabel(label)}
+				</span>
+				.
+				<RandomButton
+					size="10"
+					randomize={randomize}
+					style={{ marginLeft: '4px' }}
+					yShift="-150"
+				/>
+			</div>
 			<div className="cell-selector-display-info">
 				Press <span>SHIFT key</span> to select <span>edge/corner</span>{' '}
 				cells.

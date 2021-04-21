@@ -29,7 +29,7 @@ const MenuSectionGeneral = ({ title, type }) => {
 					yShift="-50"
 				/>
 			</div>
-			<label>Clock Hands</label>
+			<label className="menu-section-content-label">Clock Hands</label>
 			<HandToggler
 				setStyle={setStyle}
 				toggleHand={toggleHand}

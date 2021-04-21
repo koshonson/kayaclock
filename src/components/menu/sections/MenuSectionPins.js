@@ -42,6 +42,8 @@ const MenuSectionPins = ({ type, title }) => {
 		);
 	};
 
+	//console.log(style, style.rendom);
+
 	return (
 		<MenuSection type={type} title={title}>
 			<div className="menu-section-content-block jc-sb ai-st">
@@ -51,6 +53,7 @@ const MenuSectionPins = ({ type, title }) => {
 				<FinePinBlock
 					mode={modes.cellPin.mode}
 					pinLabel={modes.cellPin.label}
+					randomize={style.random}
 				/>
 			</div>
 			<div
@@ -110,6 +113,7 @@ const MenuSectionPins = ({ type, title }) => {
 					min="0"
 					max="15"
 					step="0.5"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.offset(value))
 					}

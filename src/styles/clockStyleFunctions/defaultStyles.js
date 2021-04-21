@@ -10,14 +10,14 @@ export const defaultStyles = {
 	hrHand: {
 		leaf: {
 			color: 'rgb(200, 20, 20)',
-			width: 1.8,
+			width: 2.2,
 			height: 23,
 			zIndex: 10,
 			radius: 0
 		},
 		tail: {
 			color: 'rgb(200, 20, 20)',
-			width: 1.8,
+			width: 2.2,
 			height: 5,
 			zIndex: 10,
 			radius: 0

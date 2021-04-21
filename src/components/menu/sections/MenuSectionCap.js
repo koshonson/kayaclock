@@ -6,6 +6,7 @@ import { rgbToHex, hexToRgb, random } from '../../../util';
 import MenuSection from './MenuSection';
 import Input from '../../generic/Input';
 import Select from '../../generic/Select';
+import RandomButton from '../buttons/RandomButton';
 
 const MenuSectionCap = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
@@ -34,7 +35,15 @@ const MenuSectionCap = ({ title, type }) => {
 
 	return (
 		<MenuSection title={title} type={type}>
-			<label>Inner</label>
+			<div style={{ display: 'flex' }}>
+				<label className="menu-section-content-label">Inner</label>
+				<RandomButton
+					randomize={style.inner.random}
+					size="8"
+					style={{ margin: '0 0 .25vmin .5vmin' }}
+					yShift="-50"
+				/>
+			</div>
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
@@ -105,7 +114,15 @@ const MenuSectionCap = ({ title, type }) => {
 					rotation: inner.rotation
 				})}
 			</div>
-			<label>Outer</label>
+			<div style={{ display: 'flex' }}>
+				<label className="menu-section-content-label">Outer</label>
+				<RandomButton
+					randomize={style.outer.random}
+					size="8"
+					style={{ margin: '0 0 .25vmin .5vmin' }}
+					yShift="-50"
+				/>
+			</div>
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"

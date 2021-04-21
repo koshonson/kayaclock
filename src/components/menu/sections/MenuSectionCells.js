@@ -20,7 +20,7 @@ const MenuSectionCells = ({ title, type }) => {
 		if (modes.cellCell !== 'outer') return <></>;
 		return (
 			<>
-				<label>Shadow</label>
+				<label className="menu-section-content-label">Shadow</label>
 				<div className="menu-section-content-block jc-sb">
 					<Input
 						label="Color"
@@ -92,9 +92,9 @@ const MenuSectionCells = ({ title, type }) => {
 				<Box size="10" style={{ marginTop: '1vmin' }}>
 					<Selector />
 				</Box>
-				<Label label={modes.cellCell} />
+				<Label label={modes.cellCell} randomize={style.random} />
 			</div>
-			<label>Border</label>
+			<label className="menu-section-content-label">Border</label>
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
@@ -156,7 +156,7 @@ const MenuSectionCells = ({ title, type }) => {
 					}}
 				/>
 			</div>
-			<label>Fill</label>
+			<label className="menu-section-content-label">Fill</label>
 			<div className="menu-section-content-block jc-fs">
 				<Input
 					label="Color"

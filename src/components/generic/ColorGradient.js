@@ -4,7 +4,7 @@ import { rgbToHex, hexToRgb } from '../../util';
 const ColorGradient = ({ label, colors, setCanvasBg, setStyle }) => {
 	return (
 		<div className="input-block">
-			<label>{label}</label>
+			<label className="menu-section-content-label">{label}</label>
 			<div>
 				<input
 					type="color"

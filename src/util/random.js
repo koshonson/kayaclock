@@ -25,11 +25,16 @@ const randomNumHalfTenth = (from = 0, to = 1) => {
 	return (randomNum(from, to * 20) * 5) / 100;
 };
 
+const randomBool = () => {
+	return !!randomNum(0, 1);
+};
+
 export const get16BitNum = (from = 0, to = 255) => {
 	return randomNum(from, to);
 };
 
 export const random = {
+	bool: () => randomBool(),
 	wholeNum: (from, to) => randomNum(from, to),
 	halfNum: (from, to) => randomNumHalf(from, to),
 	tenthNum: (from, to) => randomNumTenth(from, to),

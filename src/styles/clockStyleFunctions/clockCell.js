@@ -1,4 +1,4 @@
-import { combineColorTransparency as colComb } from '../../util';
+import { combineColorTransparency as colComb, random } from '../../util';
 
 const OPTIONS = [
 	'borderWidth',
@@ -82,6 +82,21 @@ export const getClockCellStyle = ({ style, type }) => {
 	};
 };
 
+const randomizeCell = () => {
+	return {
+		borderWidth: random.wholeNum(0, 80),
+		borderColor: random.color(),
+		borderOpacity: random.opacity(),
+		borderRadius: random.radius(),
+		bgColor: random.color(),
+		bgOpacity: random.opacity(),
+		shadowThickness: random.wholeNum(0, 80),
+		shadowBlur: random.wholeNum(0, 50),
+		shadowOpacity: random.opacity(),
+		shadowColor: random.color()
+	};
+};
+
 const setClockCellStyle = ({ type, styles }, currentStyles) => {
 	const newStyles = currentStyles.clockCells;
 	newStyles[type] = { ...newStyles[type], ...styles };
@@ -89,15 +104,18 @@ const setClockCellStyle = ({ type, styles }, currentStyles) => {
 };
 
 const singleCellStyler = (type, currentStyles) => {
-	return OPTIONS.reduce((a, v) => {
+	const styler = OPTIONS.reduce((a, v) => {
 		a[v] = value =>
 			setClockCellStyle({ type, styles: { [v]: value } }, currentStyles);
 		return a;
 	}, {});
+	styler.random = () =>
+		setClockCellStyle({ type, styles: randomizeCell() }, currentStyles);
+	return styler;
 };
 
 const multiCellStyler = (types, currentStyles) => {
-	return OPTIONS.reduce((a, v) => {
+	const styler = OPTIONS.reduce((a, v) => {
 		a[v] = value => {
 			for (let type of types) {
 				setClockCellStyle({ type, styles: { [v]: value } }, currentStyles);
@@ -105,6 +123,13 @@ const multiCellStyler = (types, currentStyles) => {
 		};
 		return a;
 	}, {});
+	styler.random = () => {
+		const styles = randomizeCell();
+		for (let type of types) {
+			setClockCellStyle({ type, styles }, currentStyles);
+		}
+	};
+	return styler;
 };
 
 export const clockCellStyler = (type, currentStyles) => {
@@ -165,6 +190,7 @@ const getCellSelectorLabel = type => {
 export const cellSelectorReferences = () => {
 	return {
 		getCellSelectorLabel,
-		getReferenceCell
+		getReferenceCell,
+		randomizeCell
 	};
 };

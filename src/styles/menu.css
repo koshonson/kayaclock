@@ -15,10 +15,13 @@ button {
 	height: 100%;
 	transition: all 1s;
 	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.5);
 }
 
 .menu::-webkit-scrollbar {
 	width: 2px;
+	height: 20px;
 }
 
 .menu::-webkit-scrollbar-track {
@@ -73,6 +76,10 @@ button {
 	color: rgb(100, 100, 100);
 	background-color: rgba(255, 255, 255, 0.5);
 	border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.toggle-hand-btn:hover {
+	filter: invert(0.1);
 }
 
 .menu-heading {
@@ -147,7 +154,7 @@ button {
 	visibility: collapse;
 }
 
-.menu-section-content > label {
+.menu-section-content-label {
 	font-size: 100%;
 	position: relative;
 	color: rgba(0, 0, 0, 0.5);
@@ -155,7 +162,7 @@ button {
 	padding-bottom: 2px;
 }
 
-.menu-section-content > label:after {
+.menu-section-content-label:after {
 	position: absolute;
 	content: '';
 	height: 1px;
@@ -292,7 +299,7 @@ button {
 .swap-btn {
 	cursor: pointer;
 	font-size: 70%;
-	padding: 1vmin;
+	padding: 0 1vmin;
 	border-radius: 1vmin;
 	border: 1px solid rgba(0, 0, 0, 0.05);
 	background-color: rgba(0, 0, 0, 0.1);

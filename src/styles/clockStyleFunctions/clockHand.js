@@ -1,3 +1,4 @@
+import { random } from '../../util';
 import { defaultStyles } from './defaultStyles';
 
 export const getClockHandStyle = ({ style, type, rotation }) => {
@@ -47,6 +48,43 @@ export const getClockHandStyle = ({ style, type, rotation }) => {
 			transform: `rotate(${rotation}deg)`
 		}
 	};
+};
+
+const randomHand = {
+	leaf: () => {
+		return {
+			color: random.color(),
+			width: random.tenthNum(0, 4),
+			height: random.wholeNum(5, 49),
+			radius: random.radius()
+		};
+	},
+	tail: () => {
+		return {
+			color: random.color(),
+			width: random.tenthNum(0, 4),
+			height: random.wholeNum(0, 24),
+			radius: random.radius()
+		};
+	},
+	full: () => {
+		const color = random.color();
+		const tailLength = random.wholeNum(1, 10);
+		return {
+			leaf: {
+				color,
+				height: random.wholeNum(tailLength + 5, 49),
+				width: random.wholeNum(2, 40) / 10,
+				radius: random.radius()
+			},
+			tail: {
+				color,
+				height: tailLength,
+				width: random.wholeNum(2, 40) / 10,
+				radius: random.radius()
+			}
+		};
+	}
 };
 
 const setClockHandStyle = (
@@ -114,13 +152,15 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				color: value => hrHandLeaf({ color: value }, currentStyles),
 				width: value => hrHandLeaf({ width: value }, currentStyles),
 				length: value => hrHandLeaf({ height: value }, currentStyles),
-				radius: value => hrHandLeaf({ radius: value }, currentStyles)
+				radius: value => hrHandLeaf({ radius: value }, currentStyles),
+				random: () => hrHandLeaf(randomHand.leaf(), currentStyles)
 			},
 			tail: {
 				color: value => hrHandTail({ color: value }, currentStyles),
 				width: value => hrHandTail({ width: value }, currentStyles),
 				length: value => hrHandTail({ height: value }, currentStyles),
-				radius: value => hrHandTail({ radius: value }, currentStyles)
+				radius: value => hrHandTail({ radius: value }, currentStyles),
+				random: () => hrHandTail(randomHand.tail(), currentStyles)
 			},
 			full: {
 				color: value => hrHandFull({ color: value }, currentStyles),
@@ -131,6 +171,11 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 					const zIndex = zIdx === 10 ? 20 : 10;
 					hrHandFull({ zIndex }, currentStyles);
 					mnHandFull({ zIndex: zIdx }, currentStyles);
+				},
+				random: () => {
+					const { leaf, tail } = randomHand.full();
+					hrHandLeaf(leaf, currentStyles);
+					hrHandTail(tail, currentStyles);
 				}
 			}
 		},
@@ -139,13 +184,15 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				color: value => mnHandLeaf({ color: value }, currentStyles),
 				width: value => mnHandLeaf({ width: value }, currentStyles),
 				length: value => mnHandLeaf({ height: value }, currentStyles),
-				radius: value => mnHandLeaf({ radius: value }, currentStyles)
+				radius: value => mnHandLeaf({ radius: value }, currentStyles),
+				random: () => mnHandLeaf(randomHand.leaf(), currentStyles)
 			},
 			tail: {
 				color: value => mnHandTail({ color: value }, currentStyles),
 				width: value => mnHandTail({ width: value }, currentStyles),
 				length: value => mnHandTail({ height: value }, currentStyles),
-				radius: value => mnHandTail({ radius: value }, currentStyles)
+				radius: value => mnHandTail({ radius: value }, currentStyles),
+				random: () => mnHandTail(randomHand.tail(), currentStyles)
 			},
 			full: {
 				color: value => mnHandFull({ color: value }, currentStyles),
@@ -156,6 +203,11 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 					const zIndex = zIdx === 10 ? 20 : 10;
 					const newStyles = mnHandFull({ zIndex: zIndex }, currentStyles);
 					return hrHandFull({ zIndex: zIdx }, newStyles);
+				},
+				random: () => {
+					const { leaf, tail } = randomHand.full();
+					mnHandLeaf(leaf, currentStyles);
+					mnHandTail(tail, currentStyles);
 				}
 			}
 		},
@@ -164,19 +216,26 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				color: value => scHandLeaf({ color: value }, currentStyles),
 				width: value => scHandLeaf({ width: value }, currentStyles),
 				length: value => scHandLeaf({ height: value }, currentStyles),
-				radius: value => scHandLeaf({ radius: value }, currentStyles)
+				radius: value => scHandLeaf({ radius: value }, currentStyles),
+				random: () => scHandLeaf(randomHand.leaf(), currentStyles)
 			},
 			tail: {
 				color: value => scHandTail({ color: value }, currentStyles),
 				width: value => scHandTail({ width: value }, currentStyles),
 				length: value => scHandTail({ height: value }, currentStyles),
-				radius: value => scHandTail({ radius: value }, currentStyles)
+				radius: value => scHandTail({ radius: value }, currentStyles),
+				random: () => scHandTail(randomHand.tail(), currentStyles)
 			},
 			full: {
 				color: value => scHandFull({ color: value }, currentStyles),
 				width: value => scHandFull({ width: value }, currentStyles),
 				length: value => scHandFull({ height: value }, currentStyles),
-				radius: value => scHandFull({ radius: value }, currentStyles)
+				radius: value => scHandFull({ radius: value }, currentStyles),
+				random: () => {
+					const { leaf, tail } = randomHand.full();
+					scHandLeaf(leaf, currentStyles);
+					scHandTail(tail, currentStyles);
+				}
 			}
 		}
 	};

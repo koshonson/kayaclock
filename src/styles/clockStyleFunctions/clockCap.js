@@ -1,4 +1,5 @@
 import { defaultStyles } from './defaultStyles';
+import { random } from '../../util';
 
 export const getClockCapStyle = ({ style, type }) => {
 	const options = style.clockCap[type];
@@ -13,6 +14,28 @@ export const getClockCapStyle = ({ style, type }) => {
 		backgroundColor: color,
 		borderRadius: `${radius}%`,
 		zIndex
+	};
+};
+
+const randomSnap = () => {
+	const SNAPS = {
+		1: null,
+		2: 'hr',
+		3: 'mn',
+		4: 'sc'
+	};
+	const snap = SNAPS[random.wholeNum(1, 4)];
+	console.log(snap);
+	return snap;
+};
+
+const randomCap = () => {
+	return {
+		color: random.color(),
+		size: random.wholeNum(0, 20),
+		radius: random.radius(),
+		snap: randomSnap(),
+		rotation: random.bool()
 	};
 };
 
@@ -44,6 +67,9 @@ export const clockCapStyler = (currentStyles = defaultStyles) => {
 			rotation: () => {
 				const { rotation } = currentStyles.clockCap.inner;
 				return setInnerClockCapStyle({ rotation: !rotation }, currentStyles);
+			},
+			random: () => {
+				return setInnerClockCapStyle(randomCap(), currentStyles);
 			}
 		},
 		outer: {
@@ -58,6 +84,9 @@ export const clockCapStyler = (currentStyles = defaultStyles) => {
 			rotation: () => {
 				const { rotation } = currentStyles.clockCap.outer;
 				return setOuterClockCapStyle({ rotation: !rotation }, currentStyles);
+			},
+			random: () => {
+				return setOuterClockCapStyle(randomCap(), currentStyles);
 			}
 		}
 	};

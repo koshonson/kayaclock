@@ -5,6 +5,7 @@ import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
 import Input from '../../generic/Input';
+import RandomButton from '../buttons/RandomButton';
 
 const MenuSectionHand = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
@@ -24,7 +25,7 @@ const MenuSectionHand = ({ title, type }) => {
 	};
 
 	return (
-		<MenuSection title={title} type={type}>
+		<MenuSection title={title} type={type} randomize={style.full.random}>
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					className="color-input-rect"
@@ -72,7 +73,15 @@ const MenuSectionHand = ({ title, type }) => {
 				/>
 				{renderSwapBtn(leaf.zIndex)}
 			</div>
-			<label>Leaf</label>
+			<div style={{ display: 'flex' }}>
+				<label className="menu-section-content-label">Leaf</label>
+				<RandomButton
+					randomize={style.leaf.random}
+					size="8"
+					style={{ margin: '0 0 .25vmin .5vmin' }}
+					yShift="-50"
+				/>
+			</div>
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
@@ -95,6 +104,7 @@ const MenuSectionHand = ({ title, type }) => {
 					min="0"
 					max="4"
 					step="0.1"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.leaf.width(value))
 					}
@@ -133,7 +143,16 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 			</div>
-			<label>Tail</label>
+			<div style={{ display: 'flex' }}>
+				<label className="menu-section-content-label">Tail</label>
+				<RandomButton
+					randomize={style.tail.random}
+					size="8"
+					style={{ margin: '0 0 .25vmin .5vmin' }}
+					yShift="-50"
+				/>
+			</div>
+
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					label="Color"
@@ -156,6 +175,7 @@ const MenuSectionHand = ({ title, type }) => {
 					min="0"
 					max="4"
 					step="0.1"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.width(value))
 					}
@@ -169,7 +189,7 @@ const MenuSectionHand = ({ title, type }) => {
 					type="range"
 					min="1"
 					max="24"
-					step="0.5"
+					step="1"
 					value={tail.height}
 					onChange={({ target: { value } }) =>
 						setStyle(style.tail.length(value))
