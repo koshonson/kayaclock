@@ -16,3 +16,4 @@ export {
 	clockHandToggler
 } from './clockStyleFunctions/clockBoard';
 export { getClockPinsStyle, clockPinStyler } from './clockStyleFunctions/clockPins';
+export { randomizer } from './clockStyleFunctions/randomizer';

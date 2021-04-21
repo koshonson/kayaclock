@@ -6,6 +6,7 @@ import MenuSection from './MenuSection';
 import RandomButton from '../buttons/RandomButton';
 import ColorGradient from '../../generic/ColorGradient';
 import HandToggler from '../buttons/HandToggler';
+import Randomizer from '../buttons/Randomizer';
 
 const MenuSectionGeneral = ({ title, type }) => {
 	const { style, setStyle } = useContext(styleContext);
@@ -35,6 +36,12 @@ const MenuSectionGeneral = ({ title, type }) => {
 				toggleHand={toggleHand}
 				handState={clockHands}
 			/>
+			<label className="menu-section-content-label">Randomize</label>
+			<div className="menu-section-content-block ai-fe">
+				<Randomizer type="tame" label="Tame Random" />
+				<Randomizer type="wild" label="Wild Random" />
+				<Randomizer type="reset" label="Reset" />
+			</div>
 		</MenuSection>
 	);
 };

@@ -9,7 +9,8 @@ const randomNumHalf = (from, to) => {
 };
 
 const randomNumTenth = (from, to) => {
-	return randomNum(from, to * 10) / 10;
+	const offset = randomNum(0, (to - from) * 10) / 10;
+	return from + offset;
 };
 
 const randomNumFiveFold = (from, to) => {

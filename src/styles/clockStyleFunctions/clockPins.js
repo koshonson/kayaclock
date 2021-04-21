@@ -126,12 +126,13 @@ export const getClockPinsStyle = ({ type, style, numPins, pinIdx }) => {
 };
 
 const randomizePin = () => {
+	const length = random.halfNum(0, 20);
 	return {
+		length,
 		color: random.color(),
-		width: random.halfNum(0, 10),
-		length: random.halfNum(0, 30),
-		gap: random.halfNum(0, 10),
-		offset: random.halfNum(0, 15),
+		width: random.halfNum(0, 3),
+		gap: random.halfNum(0, 4),
+		offset: random.wholeNum(0, length),
 		innerRadius: random.radius(),
 		outerRadius: random.radius()
 	};

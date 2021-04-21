@@ -25,14 +25,13 @@ const randomSnap = () => {
 		4: 'sc'
 	};
 	const snap = SNAPS[random.wholeNum(1, 4)];
-	console.log(snap);
 	return snap;
 };
 
-const randomCap = () => {
+export const randomCap = maxSize => {
 	return {
 		color: random.color(),
-		size: random.wholeNum(0, 20),
+		size: random.wholeNum(0, maxSize),
 		radius: random.radius(),
 		snap: randomSnap(),
 		rotation: random.bool()
@@ -69,7 +68,7 @@ export const clockCapStyler = (currentStyles = defaultStyles) => {
 				return setInnerClockCapStyle({ rotation: !rotation }, currentStyles);
 			},
 			random: () => {
-				return setInnerClockCapStyle(randomCap(), currentStyles);
+				return setInnerClockCapStyle(randomCap(19), currentStyles);
 			}
 		},
 		outer: {
@@ -86,7 +85,7 @@ export const clockCapStyler = (currentStyles = defaultStyles) => {
 				return setOuterClockCapStyle({ rotation: !rotation }, currentStyles);
 			},
 			random: () => {
-				return setOuterClockCapStyle(randomCap(), currentStyles);
+				return setOuterClockCapStyle(randomCap(20), currentStyles);
 			}
 		}
 	};
