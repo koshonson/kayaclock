@@ -38,9 +38,26 @@ const MenuSectionGeneral = ({ title, type }) => {
 			/>
 			<label className="menu-section-content-label">Randomize</label>
 			<div className="menu-section-content-block ai-fe">
-				<Randomizer type="tame" label="Tame Random" />
-				<Randomizer type="wild" label="Wild Random" />
-				<Randomizer type="reset" label="Reset" />
+				<Randomizer
+					className="randomizer-btn randomizer-btn-tame"
+					type="tame"
+					label="Go Tame"
+				/>
+				<Randomizer
+					className="randomizer-btn randomizer-btn-wild"
+					type="wild"
+					label="Go Wild"
+				/>
+				<Randomizer
+					className="randomizer-btn randomizer-btn-dope"
+					type="dope"
+					label="Go Dope"
+				/>
+				<Randomizer
+					className="randomizer-btn randomizer-btn-reset"
+					type="reset"
+					label="Reset"
+				/>
 			</div>
 		</MenuSection>
 	);

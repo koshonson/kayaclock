@@ -1,16 +1,24 @@
 import React, { useContext } from 'react';
 import { styleContext } from '../../../context';
-import { randomizer } from '../../../styles';
+import { randomizer, dopeRandomize } from '../../../styles';
 
-const Randomizer = ({ type, label }) => {
+const Randomizer = ({ type, label, className }) => {
 	const { style, setStyle } = useContext(styleContext);
 	const randomize = randomizer(style);
 
+	const handleClick = () => {
+		if (type !== 'dope') {
+			setStyle(randomize[type]());
+		} else {
+			dopeRandomize(() => {
+				setStyle(randomize[type]());
+				console.log('running');
+			});
+		}
+	};
+
 	return (
-		<div
-			style={{ border: '1px solid red', cursor: 'pointer' }}
-			onClick={() => setStyle(randomize[type]())}
-		>
+		<div className={className} onClick={handleClick}>
 			{label}
 		</div>
 	);

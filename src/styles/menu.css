@@ -72,6 +72,10 @@ button {
 	padding: 0 1vmin;
 	font-size: 75%;
 	font-weight: 200;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin: 0 5px 0 0;
 	color: rgb(100, 100, 100);
 	background-color: rgba(255, 255, 255, 0.5);
@@ -308,4 +312,65 @@ button {
 .swap-btn:hover {
 	background-color: rgba(0, 0, 0, 0.15);
 	transition: 0.4s;
+}
+
+.randomizer-btn {
+	cursor: pointer;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 3.5vmin;
+	padding: 0 1vmin;
+	font-size: 65%;
+	margin: 0 5px 0 0;
+	color: rgb(100, 100, 100);
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.randomizer-btn-tame:hover {
+	background-color: rgba(50, 200, 50, 0.3);
+	transition: 0.4s;
+}
+
+.randomizer-btn-wild:hover {
+	animation: wild-btn 0.75s linear infinite;
+}
+
+.randomizer-btn-dope:hover {
+	animation: dope-btn 2s linear infinite;
+	transition: 0.5s;
+}
+
+.randomizer-btn-reset:hover {
+	filter: invert(0.1);
+	transition: 0.4s;
+}
+
+@keyframes wild-btn {
+	from {
+		background-color: rgba(200, 50, 50, 0.5);
+	}
+	to {
+		background-color: transparent;
+	}
+}
+
+@keyframes dope-btn {
+	0% {
+		background-color: rgb(255, 255, 0);
+	}
+	25% {
+		background-color: rgb(0, 0, 255);
+	}
+	50% {
+		background-color: rgb(255, 0, 255);
+	}
+	75% {
+		background-color: rgb(0, 255, 0);
+	}
+	100% {
+		background-color: rgb(250, 50, 50);
+	}
 }
