@@ -6,6 +6,7 @@ import { styleContext } from '../context';
 import Menu from './Menu';
 import MenuButton from './menu/buttons/MenuButton';
 import ClockBoard from './ClockBoard';
+import MenuMobile from './MenuMobile';
 
 const App = () => {
 	const [menuVisible, setMenuVisible] = useState(false);
@@ -24,6 +25,7 @@ const App = () => {
 			<div className="container centered" style={getCanvasBg(clockStyle)}>
 				<MenuButton toggleMenu={toggleMenu} />
 				<Menu menuVisible={menuVisible} />
+				<MenuMobile />
 				<ClockBoard menuVisible={menuVisible} />
 			</div>
 		</styleContext.Provider>

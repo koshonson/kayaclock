@@ -32,3 +32,9 @@ body {
 .clock-open-menu {
 	margin-left: 30vw;
 }
+
+@media only screen and (max-width: 1024px) {
+	.centered {
+		flex-direction: column;
+	}
+}
