@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Cairo', sans-serif;
+	font-size: 16px;
+}
+
+body {
+	overflow-y: hidden;
+}
+
+.container {
+	height: 100vh;
+	width: 100%;
+}
+
+.centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.clock {
+	height: 100%;
+	flex: 1;
+	transition: all 1s;
+}
+
+.clock-open-menu {
+	margin-left: 30vw;
+}
+
+@media only screen and (max-width: 1024px) {
+	.centered {
+		flex-direction: column;
+	}
+}
