@@ -365,6 +365,7 @@ menu-mobile-btn-section {
 
 .randomizer-btn {
 	cursor: pointer;
+	user-select: none;
 	white-space: nowrap;
 	display: flex;
 	justify-content: center;
@@ -380,6 +381,7 @@ menu-mobile-btn-section {
 
 .randomizer-mobile-btn {
 	cursor: pointer;
+	user-select: none;
 	white-space: nowrap;
 	display: flex;
 	justify-content: center;
