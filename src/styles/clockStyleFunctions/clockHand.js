@@ -1,5 +1,4 @@
 import { random } from '../../util';
-import { defaultStyles } from './defaultStyles';
 
 export const getClockHandStyle = ({ style, type, rotation }) => {
 	const options = style[type];
@@ -87,11 +86,8 @@ const randomHand = {
 	}
 };
 
-const setClockHandStyle = (
-	{ type, scope, styles },
-	currentStyles = defaultStyles
-) => {
-	const newStyles = currentStyles[type];
+const setClockHandStyle = ({ type, scope, styles }, currentStyles) => {
+	const newStyles = { ...currentStyles[type] };
 	switch (scope) {
 		case 'leaf':
 			newStyles.leaf = { ...newStyles.leaf, ...styles };
@@ -106,46 +102,74 @@ const setClockHandStyle = (
 		default:
 			break;
 	}
-	return newStyles;
+	console.log({ ...currentStyles, [type]: { ...newStyles } });
+	return { [type]: { ...newStyles } };
 };
 
 const hrHandLeaf = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'hrHand', scope: 'leaf', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'hrHand', scope: 'leaf', styles },
+		currentStyles
+	);
 };
 
 const hrHandTail = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'hrHand', scope: 'tail', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'hrHand', scope: 'tail', styles },
+		currentStyles
+	);
 };
 
 const hrHandFull = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'hrHand', scope: 'full', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'hrHand', scope: 'full', styles },
+		currentStyles
+	);
 };
 
 const mnHandLeaf = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'mnHand', scope: 'leaf', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'mnHand', scope: 'leaf', styles },
+		currentStyles
+	);
 };
 
 const mnHandTail = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'mnHand', scope: 'tail', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'mnHand', scope: 'tail', styles },
+		currentStyles
+	);
 };
 
 const mnHandFull = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'mnHand', scope: 'full', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'mnHand', scope: 'full', styles },
+		currentStyles
+	);
 };
 
 const scHandLeaf = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'scHand', scope: 'leaf', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'scHand', scope: 'leaf', styles },
+		currentStyles
+	);
 };
 
 const scHandTail = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'scHand', scope: 'tail', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'scHand', scope: 'tail', styles },
+		currentStyles
+	);
 };
 
 const scHandFull = (styles, currentStyles) => {
-	setClockHandStyle({ type: 'scHand', scope: 'full', styles }, currentStyles);
+	return setClockHandStyle(
+		{ type: 'scHand', scope: 'full', styles },
+		currentStyles
+	);
 };
 
-export const clockHandStyler = (currentStyles = defaultStyles) => {
+export const clockHandStyler = currentStyles => {
 	return {
 		hrHand: {
 			leaf: {
@@ -174,8 +198,8 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				},
 				random: () => {
 					const { leaf, tail } = randomHand.full();
-					hrHandLeaf(leaf, currentStyles);
-					hrHandTail(tail, currentStyles);
+					const newLeaf = hrHandLeaf(leaf, currentStyles);
+					return hrHandTail(tail, newLeaf);
 				}
 			}
 		},
@@ -206,8 +230,8 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				},
 				random: () => {
 					const { leaf, tail } = randomHand.full();
-					mnHandLeaf(leaf, currentStyles);
-					mnHandTail(tail, currentStyles);
+					const newLeaf = mnHandLeaf(leaf, currentStyles);
+					return mnHandTail(tail, newLeaf);
 				}
 			}
 		},
@@ -233,8 +257,8 @@ export const clockHandStyler = (currentStyles = defaultStyles) => {
 				radius: value => scHandFull({ radius: value }, currentStyles),
 				random: () => {
 					const { leaf, tail } = randomHand.full();
-					scHandLeaf(leaf, currentStyles);
-					scHandTail(tail, currentStyles);
+					const newLeaf = scHandLeaf(leaf, currentStyles);
+					return scHandTail(tail, newLeaf);
 				}
 			}
 		}

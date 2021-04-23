@@ -13,7 +13,7 @@ const Controller = props => {
 	const newPin = () => ({ ...style.defaultPin });
 
 	const addPin = type => {
-		const newStyles = style.clockPins;
+		const newStyles = { ...style.clockPins };
 		if (newStyles[type].length === 3) return;
 		newStyles[type].push(newPin());
 		setStyle({ clockPins: newStyles });
@@ -21,7 +21,7 @@ const Controller = props => {
 	};
 
 	const removePin = type => {
-		const newStyles = style.clockPins;
+		const newStyles = { ...style.clockPins };
 		if (newStyles[type].length === 0) return;
 		newStyles[type].pop();
 		setStyle({ clockPins: newStyles });

@@ -127,12 +127,13 @@ export const getClockPinsStyle = ({ type, style, numPins, pinIdx }) => {
 
 const randomizePin = () => {
 	const length = random.halfNum(0, 20);
+	const width = random.halfNum(0, 3);
 	return {
 		length,
+		width,
 		color: random.color(),
-		width: random.halfNum(0, 3),
 		gap: random.halfNum(0, 4),
-		offset: random.wholeNum(0, length),
+		offset: random.wholeNum(0, width),
 		innerRadius: random.radius(),
 		outerRadius: random.radius()
 	};
@@ -159,10 +160,23 @@ const randomizePinsInBatch = currentStyles => {
 	);
 };
 
-const setClockCellStyle = ({ type, pinIdx, styles }, currentStyles) => {
-	const newStyles = currentStyles.clockPins;
-	newStyles[type][pinIdx] = { ...newStyles[type][pinIdx], ...styles };
-	currentStyles.defaultPin = { ...currentStyles.defaultPin, ...styles };
+const setClockPinsStyle = ({ type, pinIdx, styles }, currentStyles) => {
+	const newStyles = { ...currentStyles.clockPins };
+	const currentPins = [...newStyles[type]];
+	const newPins = currentPins.map((pin, i) => {
+		if (i !== pinIdx) return pin;
+		return { ...pin, ...styles };
+	});
+	newStyles[type] = newPins;
+	return {
+		clockPins: {
+			...newStyles
+		},
+		defaultPin: {
+			...newStyles[type][pinIdx],
+			...styles
+		}
+	};
 };
 
 const STYLE_PARAMS = [
@@ -179,7 +193,7 @@ const singlePinStyler = ({ type, pinIdx }, currentStyles) => {
 	const styler = STYLE_PARAMS.reduce((a, v) => {
 		a[v] = value => {
 			value = v !== 'color' ? +value : value;
-			setClockCellStyle(
+			return setClockPinsStyle(
 				{ type, pinIdx, styles: { [v]: value } },
 				currentStyles
 			);
@@ -196,12 +210,16 @@ const pinsInCellStyler = ({ type }, currentStyles) => {
 	const styler = STYLE_PARAMS.reduce((a, v) => {
 		a[v] = value => {
 			value = v !== 'color' ? +value : value;
-			currentStyles.clockPins[type].forEach((pin, pinIdx) => {
-				setClockCellStyle(
-					{ type, pinIdx, styles: { [v]: value } },
-					currentStyles
-				);
-			});
+			return currentStyles.clockPins[type].reduce(
+				(updatedStyles, pin, pinIdx) => {
+					const clockPins = setClockPinsStyle(
+						{ type, pinIdx, styles: { [v]: value } },
+						updatedStyles
+					);
+					return { ...updatedStyles, ...clockPins };
+				},
+				{ ...currentStyles }
+			);
 		};
 		return a;
 	}, {});
@@ -215,14 +233,16 @@ const batchPinStyler = currentStyles => {
 	const styler = STYLE_PARAMS.reduce((a, v) => {
 		a[v] = value => {
 			value = v !== 'color' ? +value : value;
-			['top', 'left', 'right', 'bottom'].forEach(type => {
-				currentStyles.clockPins[type].forEach((pin, pinIdx) => {
-					setClockCellStyle(
-						{ type, pinIdx, styles: { [v]: value } },
-						currentStyles
+			return ['top', 'left', 'right', 'bottom'].reduce(
+				(updatedStyles, cell) => {
+					const cellStyler = pinsInCellStyler(
+						{ type: cell },
+						updatedStyles
 					);
-				});
-			});
+					return cellStyler[v](value);
+				},
+				{ ...currentStyles }
+			);
 		};
 		return a;
 	}, {});

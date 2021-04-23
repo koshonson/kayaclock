@@ -8,7 +8,7 @@ export const getCanvasBg = style => {
 	};
 };
 
-export const canvasBgStyler = currentStyles => {
+export const canvasBgStyler = () => {
 	return {
 		primary: value => {
 			return {
