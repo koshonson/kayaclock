@@ -8,9 +8,11 @@ import MenuButton from './menu/buttons/MenuButton';
 import ClockBoard from './ClockBoard';
 import MenuMobile from './MenuMobile';
 
+const initialStyles = JSON.parse(JSON.stringify(defaultStyles));
+
 const App = () => {
 	const [menuVisible, setMenuVisible] = useState(false);
-	const [clockStyle, setClockStyle] = useState(defaultStyles);
+	const [clockStyle, setClockStyle] = useState(initialStyles);
 
 	const updateStyle = newStyles => {
 		setClockStyle(current => ({ ...current, ...newStyles }));

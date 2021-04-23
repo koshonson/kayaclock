@@ -99,36 +99,51 @@ const randomizeCell = () => {
 };
 
 const setClockCellStyle = ({ type, styles }, currentStyles) => {
-	const newStyles = currentStyles.clockCells;
+	const newStyles = { ...currentStyles.clockCells };
 	newStyles[type] = { ...newStyles[type], ...styles };
-	return newStyles;
+	return { clockCells: { ...newStyles } };
 };
 
 const singleCellStyler = (type, currentStyles) => {
 	const styler = OPTIONS.reduce((a, v) => {
-		a[v] = value =>
-			setClockCellStyle({ type, styles: { [v]: value } }, currentStyles);
+		a[v] = value => {
+			return setClockCellStyle(
+				{ type, styles: { [v]: value } },
+				currentStyles
+			);
+		};
 		return a;
 	}, {});
-	styler.random = () =>
-		setClockCellStyle({ type, styles: randomizeCell() }, currentStyles);
+	styler.random = () => {
+		return setClockCellStyle({ type, styles: randomizeCell() }, currentStyles);
+	};
+
 	return styler;
 };
 
 const multiCellStyler = (types, currentStyles) => {
 	const styler = OPTIONS.reduce((a, v) => {
 		a[v] = value => {
-			for (let type of types) {
-				setClockCellStyle({ type, styles: { [v]: value } }, currentStyles);
-			}
+			return types.reduce(
+				(finalStyles, type) => {
+					return setClockCellStyle(
+						{ type, styles: { [v]: value } },
+						finalStyles
+					);
+				},
+				{ ...currentStyles }
+			);
 		};
 		return a;
 	}, {});
 	styler.random = () => {
 		const styles = randomizeCell();
-		for (let type of types) {
-			setClockCellStyle({ type, styles }, currentStyles);
-		}
+		return types.reduce(
+			(finalStyles, type) => {
+				return setClockCellStyle({ type, styles }, finalStyles);
+			},
+			{ ...currentStyles }
+		);
 	};
 	return styler;
 };

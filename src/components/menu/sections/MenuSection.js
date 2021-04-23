@@ -17,6 +17,7 @@ const MenuSection = ({ children, title, type, randomize }) => {
 				randomize={randomize}
 				size="11"
 				style={{ margin: '0 0 .25vmin .5vmin' }}
+				yShift="-50"
 			/>
 		);
 	};

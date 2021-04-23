@@ -1,12 +1,8 @@
-import React, { useContext } from 'react';
-import { styleContext } from '../context';
-import { clockHandToggler, canvasBgStyler, getRandomBg } from '../styles';
+import React from 'react';
 
 import Randomizer from './menu/buttons/Randomizer';
 
 const MenuMobile = () => {
-	const { style, setStyle } = useContext(styleContext);
-
 	return (
 		<div className="menu-mobile menu-mobile-btn-section">
 			<label>Randomize</label>

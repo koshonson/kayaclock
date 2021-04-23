@@ -38,7 +38,7 @@ const DetailCell = ({ mode: type }) => {
 
 	const renderPins = () => {
 		if (!numPins) return;
-		const pins = clockPins[type];
+		const pins = { ...clockPins }[type];
 		return pins.map((pin, i) => {
 			return (
 				<Pin

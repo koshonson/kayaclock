@@ -1,4 +1,3 @@
-import { defaultStyles } from './defaultStyles';
 import { random } from '../../util';
 
 export const getClockCapStyle = ({ style, type }) => {
@@ -39,9 +38,9 @@ export const randomCap = maxSize => {
 };
 
 const setClockCapStyle = ({ type, styles }, currentStyles) => {
-	const newStyles = currentStyles.clockCap;
+	const newStyles = { ...currentStyles.clockCap };
 	newStyles[type] = { ...newStyles[type], ...styles };
-	return newStyles;
+	return { clockCap: { ...newStyles } };
 };
 
 const setInnerClockCapStyle = (styles, currentStyles) => {
@@ -52,7 +51,7 @@ const setOuterClockCapStyle = (styles, currentStyles) => {
 	return setClockCapStyle({ type: 'outer', styles }, currentStyles);
 };
 
-export const clockCapStyler = (currentStyles = defaultStyles) => {
+export const clockCapStyler = currentStyles => {
 	return {
 		inner: {
 			color: color => setInnerClockCapStyle({ color }, currentStyles),

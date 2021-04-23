@@ -10,9 +10,9 @@ export const getClockBoardStyle = ({ clockBoardSize }) => {
 const toggle = num => (num === 0 ? 1 : 0);
 
 const setVisibleClockHands = (type, currentStyles) => {
-	const newStyles = currentStyles.clockHands;
+	const newStyles = { ...currentStyles.clockHands };
 	newStyles[type] = toggle(newStyles[type]);
-	return newStyles;
+	return { clockHands: { ...newStyles } };
 };
 
 export const clockHandToggler = currentStyles => {

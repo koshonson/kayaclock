@@ -15,8 +15,9 @@ const MenuSectionPins = ({ type, title }) => {
 	const refCell = modes.cellPin.mode === 'batch' ? 'top' : modes.cellPin.mode;
 	const refPinIdx = modes.cellPin.pinIdx === 3 ? 0 : modes.cellPin.pinIdx;
 
-	const pin =
-		currentStyles.clockPins[refCell][refPinIdx] || currentStyles.defaultPin;
+	const pin = { ...currentStyles.clockPins[refCell] }[refPinIdx] || {
+		...currentStyles.defaultPin
+	};
 	const style = clockPinStyler(
 		{ type: modes.cellPin.mode, pinIdx: modes.cellPin.pinIdx },
 		currentStyles
