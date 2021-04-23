@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../../context';
-import { clockHandStyler } from '../../../styles';
+import { styleContext, menuContext } from '../../../context';
+import { clockHandStyler, LABELS } from '../../../styles';
 import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
@@ -8,9 +8,19 @@ import Input from '../../generic/Input';
 import RandomButton from '../buttons/RandomButton';
 
 const MenuSectionHand = ({ title, type }) => {
+	const { lang } = useContext(menuContext);
 	const { style: currentStyles, setStyle } = useContext(styleContext);
 	const { [type]: style } = clockHandStyler(currentStyles);
 	const { leaf, tail } = currentStyles[type];
+	const {
+		generic: labels,
+		sections: {
+			hands: {
+				blocks,
+				zIdxBtn: { pullAbove, pushBelow }
+			}
+		}
+	} = LABELS;
 
 	const renderSwapBtn = zIdx => {
 		if (type === 'scHand') return <></>;
@@ -19,7 +29,7 @@ const MenuSectionHand = ({ title, type }) => {
 				className="swap-btn"
 				onClick={() => setStyle(style.full.swap(zIdx))}
 			>
-				{zIdx === 10 ? 'Pull above' : 'Push below'}
+				{zIdx === 10 ? pullAbove[lang] : pushBelow[lang]}
 			</div>
 		);
 	};
@@ -29,7 +39,7 @@ const MenuSectionHand = ({ title, type }) => {
 			<div className="menu-section-content-block jc-sb">
 				<Input
 					className="color-input-rect"
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					value={rgbToHex(leaf.color)}
@@ -41,7 +51,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Width"
+					label={labels.width[lang]}
 					display={true}
 					type="range"
 					value={leaf.width}
@@ -57,7 +67,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Length"
+					label={labels.length[lang]}
 					display={true}
 					type="range"
 					min="5"
@@ -74,7 +84,9 @@ const MenuSectionHand = ({ title, type }) => {
 				{renderSwapBtn(leaf.zIndex)}
 			</div>
 			<div style={{ display: 'flex' }}>
-				<label className="menu-section-content-label">Leaf</label>
+				<label className="menu-section-content-label">
+					{blocks.leaf[lang]}
+				</label>
 				<RandomButton
 					randomize={style.leaf.random}
 					size="8"
@@ -84,7 +96,7 @@ const MenuSectionHand = ({ title, type }) => {
 			</div>
 			<div className="menu-section-content-block jc-sb">
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					className="color-input-circle"
@@ -97,7 +109,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Width"
+					label={labels.width[lang]}
 					display={true}
 					type="range"
 					value={leaf.width}
@@ -113,7 +125,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Length"
+					label={labels.length[lang]}
 					display={true}
 					type="range"
 					min="5"
@@ -128,7 +140,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Radius"
+					label={labels.radius[lang]}
 					display={true}
 					type="range"
 					min="0"
@@ -144,7 +156,9 @@ const MenuSectionHand = ({ title, type }) => {
 				/>
 			</div>
 			<div style={{ display: 'flex' }}>
-				<label className="menu-section-content-label">Tail</label>
+				<label className="menu-section-content-label">
+					{blocks.tail[lang]}
+				</label>
 				<RandomButton
 					randomize={style.tail.random}
 					size="8"
@@ -155,7 +169,7 @@ const MenuSectionHand = ({ title, type }) => {
 
 			<div className="menu-section-content-block jc-sb">
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					className="color-input-circle"
@@ -168,7 +182,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Width"
+					label={labels.width[lang]}
 					display={true}
 					type="range"
 					value={tail.width}
@@ -184,7 +198,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Length"
+					label={labels.length[lang]}
 					display={true}
 					type="range"
 					min="1"
@@ -199,7 +213,7 @@ const MenuSectionHand = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Radius"
+					label={labels.radius[lang]}
 					display={true}
 					type="range"
 					min="0"

@@ -1,6 +1,11 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../../context';
-import { clockHandToggler, canvasBgStyler, getRandomBg } from '../../../styles';
+import { styleContext, menuContext } from '../../../context';
+import {
+	clockHandToggler,
+	canvasBgStyler,
+	getRandomBg,
+	LABELS
+} from '../../../styles';
 
 import MenuSection from './MenuSection';
 import RandomButton from '../buttons/RandomButton';
@@ -9,16 +14,18 @@ import HandToggler from '../buttons/HandToggler';
 import Randomizer from '../buttons/Randomizer';
 
 const MenuSectionGeneral = ({ title, type }) => {
+	const { lang } = useContext(menuContext);
 	const { style, setStyle } = useContext(styleContext);
 	const toggleHand = clockHandToggler(style);
 	const setCanvasBg = canvasBgStyler(style);
 	const { bgColorPrimary, bgColorSecondary, clockHands } = style;
+	const { blocks: labels } = LABELS.sections.general;
 
 	return (
 		<MenuSection title={title} type={type}>
 			<div className="menu-section-content-block ai-fe">
 				<ColorGradient
-					label="Background"
+					label={labels.bg[lang]}
 					colors={{ bgColorPrimary, bgColorSecondary }}
 					setStyle={setStyle}
 					setCanvasBg={setCanvasBg}
@@ -30,33 +37,37 @@ const MenuSectionGeneral = ({ title, type }) => {
 					yShift="-50"
 				/>
 			</div>
-			<label className="menu-section-content-label">Clock Hands</label>
+			<label className="menu-section-content-label">
+				{labels.clockHands[lang]}
+			</label>
 			<HandToggler
 				setStyle={setStyle}
 				toggleHand={toggleHand}
 				handState={clockHands}
 			/>
-			<label className="menu-section-content-label">Randomize</label>
+			<label className="menu-section-content-label">
+				{labels.randomize[lang]}
+			</label>
 			<div className="menu-section-content-block ai-fe">
 				<Randomizer
 					className="randomizer-btn randomizer-btn-tame"
 					type="tame"
-					label="Go Tame"
+					label={labels.randomize.modes.tame[lang]}
 				/>
 				<Randomizer
 					className="randomizer-btn randomizer-btn-wild"
 					type="wild"
-					label="Go Wild"
+					label={labels.randomize.modes.wild[lang]}
 				/>
 				<Randomizer
 					className="randomizer-btn randomizer-btn-dope"
 					type="dope"
-					label="Go Dope"
+					label={labels.randomize.modes.dope[lang]}
 				/>
 				<Randomizer
 					className="randomizer-btn randomizer-btn-reset"
 					type="reset"
-					label="Reset"
+					label={labels.randomize.modes.reset[lang]}
 				/>
 			</div>
 		</MenuSection>

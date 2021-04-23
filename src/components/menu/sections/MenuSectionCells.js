@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { styleContext, menuContext } from '../../../context';
-import { clockCellStyler, cellSelectorReferences } from '../../../styles';
+import { clockCellStyler, cellSelectorReferences, LABELS } from '../../../styles';
 import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
@@ -11,19 +11,27 @@ import Label from '../cell_selector/Label';
 
 const MenuSectionCells = ({ title, type }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
-	const { modes } = useContext(menuContext);
+	const { modes, lang } = useContext(menuContext);
 	const style = clockCellStyler(modes.cellCell, currentStyles);
 	const { getReferenceCell } = cellSelectorReferences();
 	const cells = currentStyles.clockCells[getReferenceCell(modes.cellCell)];
+	const {
+		generic: labels,
+		sections: {
+			cells: { blocks: blockLabels }
+		}
+	} = LABELS;
 
 	const renderShadowControls = () => {
 		if (modes.cellCell !== 'outer') return <></>;
 		return (
 			<>
-				<label className="menu-section-content-label">Shadow</label>
+				<label className="menu-section-content-label">
+					{blockLabels.shadow[lang]}
+				</label>
 				<div className="menu-section-content-block jc-sb">
 					<Input
-						label="Color"
+						label={labels.color[lang]}
 						display={false}
 						type="color"
 						className="color-input-rect"
@@ -36,7 +44,7 @@ const MenuSectionCells = ({ title, type }) => {
 						}}
 					/>
 					<Input
-						label="Opacity"
+						label={labels.opacity[lang]}
 						display={true}
 						type="range"
 						value={cells.shadowOpacity}
@@ -52,7 +60,7 @@ const MenuSectionCells = ({ title, type }) => {
 						}}
 					/>
 					<Input
-						label="Thickness"
+						label={labels.thickness[lang]}
 						display={true}
 						type="range"
 						value={cells.shadowThickness}
@@ -67,7 +75,7 @@ const MenuSectionCells = ({ title, type }) => {
 						}}
 					/>
 					<Input
-						label="Blur"
+						label={labels.blur[lang]}
 						display={true}
 						type="range"
 						value={cells.shadowBlur}
@@ -92,12 +100,14 @@ const MenuSectionCells = ({ title, type }) => {
 				<Box size="10" style={{ marginTop: '1vmin' }}>
 					<Selector />
 				</Box>
-				<Label label={modes.cellCell} randomize={style.random} />
+				<Label label={modes.cellCell} randomize={style.random} lang={lang} />
 			</div>
-			<label className="menu-section-content-label">Border</label>
+			<label className="menu-section-content-label">
+				{blockLabels.border[lang]}
+			</label>
 			<div className="menu-section-content-block jc-sb">
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					className="color-input-rect"
@@ -110,7 +120,7 @@ const MenuSectionCells = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Opacity"
+					label={labels.opacity[lang]}
 					display={true}
 					type="range"
 					value={cells.borderOpacity}
@@ -126,7 +136,7 @@ const MenuSectionCells = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Width"
+					label={labels.width[lang]}
 					display={true}
 					type="range"
 					value={cells.borderWidth}
@@ -141,7 +151,7 @@ const MenuSectionCells = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Radius"
+					label={labels.radius[lang]}
 					display={true}
 					type="range"
 					value={cells.borderRadius}
@@ -156,10 +166,12 @@ const MenuSectionCells = ({ title, type }) => {
 					}}
 				/>
 			</div>
-			<label className="menu-section-content-label">Fill</label>
+			<label className="menu-section-content-label">
+				{blockLabels.fill[lang]}
+			</label>
 			<div className="menu-section-content-block jc-fs">
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					className="color-input-rect"
@@ -172,7 +184,7 @@ const MenuSectionCells = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Opacity"
+					label={labels.opacity[lang]}
 					display={true}
 					type="range"
 					value={cells.bgOpacity}

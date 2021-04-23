@@ -489,7 +489,6 @@ export const dopeRandomize = (
 ) => {
 	const startRound = rounds;
 	while (rounds > 0) {
-		console.log('randomizing: round ' + rounds);
 		setTimeout(callback, baseInterval);
 		baseInterval += intStep * (startRound + 1 - rounds);
 		rounds--;

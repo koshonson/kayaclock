@@ -1,4 +1,5 @@
 import { combineColorTransparency as colComb, random } from '../../util';
+import { LABELS } from './localization';
 
 const OPTIONS = [
 	'borderWidth',
@@ -157,33 +158,21 @@ const getReferenceCell = type => {
 	return REFERENCES[type] ? REFERENCES[type] : type;
 };
 
-const formatCellSelectorType = type => {
-	const LABELS = {
-		corners: 'corner',
-		edges: 'edge',
-		outer: 'outer',
-		center: 'center',
-		topLeft: 'top-left',
-		top: 'top',
-		topRight: 'top-right',
-		left: 'left',
-		right: 'right',
-		bottomLeft: 'bottom-left',
-		bottom: 'bottom',
-		bottomRight: 'bottom-right'
-	};
-	return LABELS[type];
+const formatCellSelectorType = (type, lang) => {
+	const { names: labels } = LABELS.sections.cells;
+	return labels[type][lang];
 };
 
-const getCellSelectorLabel = type => {
-	const label = formatCellSelectorType(type);
+const getCellSelectorLabel = (type, lang) => {
+	const { prefix, suffix } = LABELS.sections.cells.selector.selection;
+	const label = formatCellSelectorType(type, lang);
 	switch (type) {
 		case 'corners':
 		case 'edges':
 		case 'outer':
-			return `all ${label} cells`;
+			return `${prefix.many[lang]} ${label} ${suffix.many[lang]}`;
 		default:
-			return `the ${label} cell`;
+			return `${prefix.one[lang]} ${label} ${suffix.one[lang]}`;
 	}
 };
 

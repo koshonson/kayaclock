@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { styleContext, menuContext } from '../../../context';
-import { clockPinStyler } from '../../../styles';
+import { clockPinStyler, LABELS } from '../../../styles';
 import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
@@ -11,7 +11,7 @@ import Box from '../../generic/Box';
 
 const MenuSectionPins = ({ type, title }) => {
 	const { style: currentStyles, setStyle } = useContext(styleContext);
-	const { modes } = useContext(menuContext);
+	const { modes, lang } = useContext(menuContext);
 	const refCell = modes.cellPin.mode === 'batch' ? 'top' : modes.cellPin.mode;
 	const refPinIdx = modes.cellPin.pinIdx === 3 ? 0 : modes.cellPin.pinIdx;
 
@@ -21,12 +21,13 @@ const MenuSectionPins = ({ type, title }) => {
 		{ type: modes.cellPin.mode, pinIdx: modes.cellPin.pinIdx },
 		currentStyles
 	);
+	const { generic: labels } = LABELS;
 
 	const renderGapInput = () => {
 		if (modes.cellPin.pinIdx !== 3) return <></>;
 		return (
 			<Input
-				label="Pin Gap"
+				label={labels.pinGap[lang]}
 				display={true}
 				type="range"
 				value={pin.gap}
@@ -54,6 +55,7 @@ const MenuSectionPins = ({ type, title }) => {
 					mode={modes.cellPin.mode}
 					pinLabel={modes.cellPin.label}
 					randomize={style.random}
+					lang={lang}
 				/>
 			</div>
 			<div
@@ -61,7 +63,7 @@ const MenuSectionPins = ({ type, title }) => {
 				style={{ marginTop: '1vmin' }}
 			>
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					value={rgbToHex(pin.color)}
@@ -74,7 +76,7 @@ const MenuSectionPins = ({ type, title }) => {
 					}}
 				/>
 				<Input
-					label="Width"
+					label={labels.width[lang]}
 					display={true}
 					type="range"
 					value={pin.width}
@@ -90,7 +92,7 @@ const MenuSectionPins = ({ type, title }) => {
 					}}
 				/>
 				<Input
-					label="Length"
+					label={labels.length[lang]}
 					display={true}
 					type="range"
 					value={pin.length}
@@ -106,7 +108,7 @@ const MenuSectionPins = ({ type, title }) => {
 					}}
 				/>
 				<Input
-					label="Offset"
+					label={labels.offset[lang]}
 					display={true}
 					type="range"
 					value={pin.offset}
@@ -127,7 +129,7 @@ const MenuSectionPins = ({ type, title }) => {
 				style={{ marginTop: '1vmin' }}
 			>
 				<Input
-					label="Inner Radius"
+					label={labels.innerRadius[lang]}
 					display={true}
 					type="range"
 					value={pin.innerRadius}
@@ -142,7 +144,7 @@ const MenuSectionPins = ({ type, title }) => {
 					}}
 				/>
 				<Input
-					label="Outer Radius"
+					label={labels.outerRadius[lang]}
 					display={true}
 					type="range"
 					value={pin.outerRadius}

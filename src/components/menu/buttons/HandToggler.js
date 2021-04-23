@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { menuContext } from '../../../context';
+import { LABELS } from '../../../styles';
 
 const HandToggler = ({ setStyle, toggleHand, handState }) => {
+	const { lang } = useContext(menuContext);
+	const { hands: labels } = LABELS.sections;
 	const { hr, mn, sc } = handState;
 	const setFilter = state => {
 		return state ? {} : { filter: 'invert(1)' };
@@ -13,21 +17,21 @@ const HandToggler = ({ setStyle, toggleHand, handState }) => {
 				className="toggle-hand-btn"
 				onClick={() => setStyle(toggleHand.hr())}
 			>
-				Hour Hand
+				{labels.hr[lang]}
 			</div>
 			<div
 				style={setFilter(mn)}
 				className="toggle-hand-btn"
 				onClick={() => setStyle(toggleHand.mn())}
 			>
-				Minute Hand
+				{labels.mn[lang]}
 			</div>
 			<div
 				style={setFilter(sc)}
 				className="toggle-hand-btn"
 				onClick={() => setStyle(toggleHand.sc())}
 			>
-				Second Hand
+				{labels.sc[lang]}
 			</div>
 		</div>
 	);

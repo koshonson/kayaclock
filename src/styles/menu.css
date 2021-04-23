@@ -19,6 +19,27 @@ button {
 	scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.5);
 }
 
+.flag {
+	position: absolute;
+	top: 0.8vmin;
+	width: 2.25vmin;
+	height: 2.25vmin;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.flag:hover {
+	transform: scale(1.1);
+}
+
+.czech-flag {
+	left: calc(30vw - 2vmin - 2.25vmin);
+}
+
+.uk-flag {
+	left: calc(30vw - 2vmin - 2.25vmin - 1vmin - 2.25vmin);
+}
+
 .menu::-webkit-scrollbar {
 	width: 2px;
 	height: 20px;

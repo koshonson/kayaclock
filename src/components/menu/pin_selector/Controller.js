@@ -55,7 +55,7 @@ const Controller = props => {
 		<div style={{ display: 'flex', marginLeft: '20px' }}>
 			<div style={{ display: 'flex', flexDirection: 'column' }}>
 				<div style={{ fontSize: '60%', color: 'rgba(0,0,0,0.45)' }}>
-					Number of pins:
+					{props.label}:
 				</div>
 				<div className="pin-selector">
 					<div

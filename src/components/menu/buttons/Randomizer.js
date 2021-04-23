@@ -10,10 +10,7 @@ const Randomizer = ({ type, label, className }) => {
 		if (type !== 'dope') {
 			setStyle(randomize[type]());
 		} else {
-			dopeRandomize(() => {
-				setStyle(randomize[type]());
-				console.log('running');
-			});
+			dopeRandomize(() => setStyle(randomize[type]()));
 		}
 	};
 

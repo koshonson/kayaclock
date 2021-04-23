@@ -17,3 +17,4 @@ export {
 } from './clockStyleFunctions/clockBoard';
 export { getClockPinsStyle, clockPinStyler } from './clockStyleFunctions/clockPins';
 export { randomizer, dopeRandomize } from './clockStyleFunctions/randomizer';
+export { LABELS } from './clockStyleFunctions/localization';

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { styleContext } from '../../../context';
-import { clockCapStyler } from '../../../styles';
+import { styleContext, menuContext } from '../../../context';
+import { clockCapStyler, LABELS } from '../../../styles';
 import { rgbToHex, hexToRgb, random } from '../../../util';
 
 import MenuSection from './MenuSection';
@@ -9,22 +9,31 @@ import Select from '../../generic/Select';
 import RandomButton from '../buttons/RandomButton';
 
 const MenuSectionCap = ({ title, type }) => {
+	const { lang } = useContext(menuContext);
 	const { style: currentStyles, setStyle } = useContext(styleContext);
 	const style = clockCapStyler(currentStyles);
 	const { inner, outer } = currentStyles.clockCap;
+	const { generic: labels } = LABELS;
+	const {
+		blocks: blockLabels,
+		zIdxRange: zIdxLabel,
+		snap: snapLabel,
+		rotate: rotateLabel
+	} = LABELS.sections.cap;
 
 	const renderSnapAndRotate = ({ type, radius, rotation }) => {
 		if (radius > 40) return <></>;
 		return (
 			<>
 				<Select
-					label="Snap to"
+					label={snapLabel[lang]}
+					lang={lang}
 					onChange={({ target: { value } }) =>
 						setStyle(style[type].snap(value))
 					}
 				/>
 				<Input
-					label="Rotate"
+					label={rotateLabel[lang]}
 					type="checkbox"
 					checked={rotation}
 					onChange={() => setStyle(style[type].rotation())}
@@ -36,7 +45,9 @@ const MenuSectionCap = ({ title, type }) => {
 	return (
 		<MenuSection title={title} type={type}>
 			<div style={{ display: 'flex' }}>
-				<label className="menu-section-content-label">Inner</label>
+				<label className="menu-section-content-label">
+					{blockLabels.inner[lang]}
+				</label>
 				<RandomButton
 					randomize={style.inner.random}
 					size="8"
@@ -46,7 +57,7 @@ const MenuSectionCap = ({ title, type }) => {
 			</div>
 			<div className="menu-section-content-block jc-sb">
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					className="color-input-rect"
@@ -59,7 +70,7 @@ const MenuSectionCap = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Size"
+					label={labels.size[lang]}
 					display={true}
 					type="range"
 					value={inner.size}
@@ -75,7 +86,7 @@ const MenuSectionCap = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Radius"
+					label={labels.radius[lang]}
 					display={true}
 					type="range"
 					min="0"
@@ -95,7 +106,7 @@ const MenuSectionCap = ({ title, type }) => {
 				style={{ marginTop: '1vmin' }}
 			>
 				<Input
-					label="Vertical placement"
+					label={zIdxLabel[lang]}
 					type="range"
 					value={inner.zIndex}
 					min="5"
@@ -115,7 +126,9 @@ const MenuSectionCap = ({ title, type }) => {
 				})}
 			</div>
 			<div style={{ display: 'flex' }}>
-				<label className="menu-section-content-label">Outer</label>
+				<label className="menu-section-content-label">
+					{blockLabels.outer[lang]}
+				</label>
 				<RandomButton
 					randomize={style.outer.random}
 					size="8"
@@ -125,7 +138,7 @@ const MenuSectionCap = ({ title, type }) => {
 			</div>
 			<div className="menu-section-content-block jc-sb">
 				<Input
-					label="Color"
+					label={labels.color[lang]}
 					display={false}
 					type="color"
 					className="color-input-rect"
@@ -138,13 +151,14 @@ const MenuSectionCap = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Size"
+					label={labels.size[lang]}
 					display={true}
 					type="range"
 					value={outer.size}
 					min="0"
 					max="20"
 					step="0.5"
+					decimals="1"
 					onChange={({ target: { value } }) =>
 						setStyle(style.outer.size(value))
 					}
@@ -153,7 +167,7 @@ const MenuSectionCap = ({ title, type }) => {
 					}}
 				/>
 				<Input
-					label="Radius"
+					label={labels.radius[lang]}
 					display={true}
 					type="range"
 					min="0"
@@ -173,7 +187,7 @@ const MenuSectionCap = ({ title, type }) => {
 				style={{ marginTop: '1vmin' }}
 			>
 				<Input
-					label="Vertical placement"
+					label={zIdxLabel[lang]}
 					type="range"
 					value={outer.zIndex}
 					min="5"

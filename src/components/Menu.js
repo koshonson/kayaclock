@@ -1,18 +1,14 @@
 import '../styles/menu.css';
 import React, { useState, useContext } from 'react';
 import { menuContext, styleContext } from '../context';
+import { LABELS } from '../styles';
 
+import LangButtons from './menu/buttons/LangButtons';
 import MenuSectionGeneral from './menu/sections/MenuSectionGeneral';
 import MenuSectionHand from './menu/sections/MenuSectionHand';
 import MenuSectionCap from './menu/sections/MenuSectionCap';
 import MenuSectionCells from './menu/sections/MenuSectionCells';
 import MenuSectionPins from './menu/sections/MenuSectionPins';
-
-const HAND_LABELS = {
-	hr: 'Hour Hand',
-	mn: 'Minute Hand',
-	sc: 'Second Hand'
-};
 
 const SELECTORS = {
 	cellCell: 'center',
@@ -23,6 +19,7 @@ const SELECTORS = {
 const Menu = ({ menuVisible }) => {
 	const [expanded, setExpanded] = useState('general');
 	const [modes, setModes] = useState(SELECTORS);
+	const [lang, setLang] = useState('en');
 	const {
 		style: { clockHands }
 	} = useContext(styleContext);
@@ -35,6 +32,8 @@ const Menu = ({ menuVisible }) => {
 		pin: value => setModes({ ...modes, pin: value })
 	};
 
+	const { mainHeader, sections } = LABELS;
+
 	const renderHandsMenu = () => {
 		const hands = Object.keys(clockHands);
 		return hands
@@ -44,7 +43,7 @@ const Menu = ({ menuVisible }) => {
 					<MenuSectionHand
 						type={`${hand}Hand`}
 						key={`${hand}Hand-menu`}
-						title={HAND_LABELS[hand]}
+						title={sections.hands[hand][lang]}
 					/>
 				);
 			});
@@ -52,15 +51,16 @@ const Menu = ({ menuVisible }) => {
 
 	return (
 		<div className={`menu ${menuVisible ? 'menu-open' : ''}`}>
-			<div className="menu-heading">Customize Clock</div>
+			<div className="menu-heading">{mainHeader[lang]}</div>
 			<menuContext.Provider
-				value={{ expanded, setExpanded, modes, changeMode }}
+				value={{ expanded, setExpanded, modes, changeMode, lang, setLang }}
 			>
-				<MenuSectionGeneral title="General" type="general" />
-				<MenuSectionCells title="Clock Cells" type="clockCells" />
-				<MenuSectionPins title="Clock Pins" type="clockPins" />
+				<LangButtons />
+				<MenuSectionGeneral title={sections.general[lang]} type="general" />
+				<MenuSectionCells title={sections.cells[lang]} type="clockCells" />
+				<MenuSectionPins title={sections.pins[lang]} type="clockPins" />
 				{renderHandsMenu()}
-				<MenuSectionCap title="Clock Cap" type="clockCap" />
+				<MenuSectionCap title={sections.cap[lang]} type="clockCap" />
 			</menuContext.Provider>
 		</div>
 	);
